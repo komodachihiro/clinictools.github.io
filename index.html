@@ -1,1160 +1,440 @@
-
-/* ------------------------------------------
-トップ
----------------------------------------------*/
-#top {
-  /* 背景画像の設定 */
-  background-image: url("img/topback.jpg"); /* 実際のパスに合わせて変更 */
-  background-size: cover;         /* 全体にフィット */
-  background-position: center;    /* 中央寄せ */
-  background-repeat: no-repeat;   /* 繰り返しなし */
-  height: 100vh;                  /* 画面の高さに合わせる */
-  position: relative;
-  color: #fff;
-  text-align: center;   /* 上の余白と横マージンを調整 */
-  box-sizing: border-box;
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-/* 回転する円 共通 */
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.988), rgba(251, 184, 28, 0.827), rgba(255, 150, 0, 0.4));  animation: rotateCircle 6s linear infinite;
-  z-index: 0; /* 後ろに配置 */
-}
-
-/* 円1：左上寄り */
-.circle01 {
-  width: 300px;
-  height: 300px;
-  top: 150px;
-  left: 100px;
-}
-
-/* 円2：右下寄り */
-.circle02 {
-  width: 390px;
-  height: 390px;
-  bottom: 350px;
-  right: 30px;
-}
-
-/* 回転アニメーション（右回り） */
-@keyframes rotateCircle {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-/* 左右の余白設定 */
-.top_element{
-  width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: border-box;
-  z-index: 1; /* これが必要 */
-}
-
-.toptitle,
-.topimg,
-header {
-  position: relative;
-  z-index: 2;
-}
-
-header{
-  display: flex;
-  padding-top: 20px;
-}
-
-header img{
-  width: 70%;
-  height: auto;
-}
-
-.headerlist{
-  padding-left: 350px;
-}
-
-.headerlist ul {
-  display: flex;              /* 横並びにする */
-  gap: 80px;                  /* 項目間の間隔（お好みで調整） */
-  list-style: none;           /* ・（リストマーカー）を消す */
-  padding: 0;                 /* ブラウザのデフォルト余白を削除 */
-  margin: 0;
-}
-
-/* リンクのスタイル（任意で装飾） */
-.headerlist ul li a {
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-  color: #572e2e;
-  padding-bottom: 4px; /* 下線と文字の間隔調整 */
-}
-
-/* 擬似要素で下線を作る */
-.headerlist ul li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;                     /* 初期状態は非表示 */
-  height: 1.5px;
-  background-color: #572e2e;     /* 下線の色（お好みで） */
-  transition: width 0.3s ease;   /* アニメーション効果 */
-}
-
-/* ホバー時に下線がスライドして表示される */
-.headerlist ul li a:hover::after {
-  width: 100%;
-}
-
-.toptitle{
-padding-top: 50px;
-text-align: left;
-}
-
-.toptitle h1{
-line-height: 67px;
-}
-
-.toptitle_span01{
-  font-size: 60px;
-  letter-spacing: 0;
-  font-weight: 800;
-}
-
-.toptitle_span02{
-  font-size: 110px;
-  font-weight: 900;
-  letter-spacing: 0;
-}
-
-.toptitle_text{
-  font-size: 22px;
-  margin-top: -10px;
-}
-
-.topimg{
-  padding-top: 40px;
-}
-
-
-/* 申し込みボタン */
-.top_button {
-  position: fixed;        /* 固定表示 */
-  bottom: 40px;           /* 画面下からの距離 */
-  right: 150px;            /* 画面右からの距離 */
-  z-index: 1000;          /* 他の要素の上に出す */
-}
-
-/* 申し込みボタン非表示 */
-.top_button.hide {
-  display: none !important;
-}
-
-.contact-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 30px;
-    background: linear-gradient(to bottom, #f37c7c, #9e3c6c);
-    color: white;
-    font-size: 1.2em;
-    font-weight: 400;
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-  }
-  
-  .contact-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-  }
-  
-  .arrow-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .arrow-icon svg {
-    width: 24px;
-    height: 24px;
-  }
-
-
-  /* ------------------------------------------
-メリット
----------------------------------------------*/
-
-#merit{
-  background-color: #f2e7c4;
-
-}
-
-.merit_element{
-  width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.merit_title_container {
-  padding-top: 10px;
-  padding-bottom: 120px;
-  text-align: center;
-
-}
-
-.merittitle{
-  font-family: "Noto Sans JP", sans-serif;
-  color: #fff;
-  font-size: 130px;
-}
-
-.merit_title_container p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  margin-top: -110px;
-}
-
-.merit_border {
-  width: 100px;               /* 線の長さ（お好みで調整） */
-  height: 2px;                /* 線の太さ */
-  background-color: #000;  /* 線の色 */
-  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
-}
-
-
-/* メリット紹介 */
-.merit_icon_container {
-  display: flex;
-  font-family: "Noto Sans JP", sans-serif;
-  gap: 70px;
-  padding-bottom: 100px;
-}
-
-.merit_icon_01{
-  text-align: left;
-}
-
-.merit_icon_title {
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 26px;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  line-height: 30px;
-}
-
-.merit_icon_text{
-  font-size: 15px;
-  font-family: "M PLUS 1p", sans-serif;
-  width: 290px;
-}
-
-
-  /* ------------------------------------------
-制作物の紹介
----------------------------------------------*/
-
-#service{
-  background-color: #fff;
-}
-
-.service_element{
-  width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.service_title_container{
-  padding-top: 10px;
-  padding-bottom: 80px;
-  text-align: center;
-}
-
-.servicetitle{
-  font-family: "Noto Sans JP", sans-serif;
-  color: #ffe8a6;
-  font-size: 130px;
-}
-
-.service_title_container p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  margin-top: -110px;
-}
-
-.service_border{
-  width: 100px;               /* 線の長さ（お好みで調整） */
-  height: 2px;                /* 線の太さ */
-  background-color: #000;  /* 線の色 */
-  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
-}
-
-.service_container{
-  display: flex;
-  gap: 40px;
-}
-
-/* 院内ツール制作物アイコン */
-
-.service_container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 横3列 */
-  gap: 40px;                             /* アイテム間の余白 */
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
-
-.service_container_box01_text{
-  background-color: #f1ca80;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box01_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 30px;
-  margin-right: -30px;
-  text-align: center;
-}
-
-.service_container_box02_text{
-  background-color: #a68f86;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box02_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 30px;
-  margin-right: -30px;
-  text-align: center;
-}
-
-.service_container_box03_text{
-  background-color: #f1ca80;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box03_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 30px;
-  margin-right: -30px;
-  text-align: center;
-}
-
-.service_container_box04_text{
-  background-color: #a68f86;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box04_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0px;
-  margin-right: 0px;
-  text-align: center;
-}
-
-.service_container_box05_text{
-  background-color: #f1ca80;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box05_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0px;
-  margin-right: 0px;
-  text-align: center;
-}
-
-.service_box05_text_span{
-  font-size: 15px;
-}
-
-.service_container_box06_text{
-  background-color: #a68f86;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box06_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0px;
-  margin-right: 0px;
-  text-align: center;
-}
-
-.service_container_box07_text{
-  background-color: #f1ca80;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box07_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 30px;
-  margin-right: -30px;
-  text-align: center;
-}
-
-.service_container_box08_text{
-  background-color: #a68f86;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box08_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0px;
-  margin-right: 0px;
-  text-align: center;
-}
-
-.service_container_box09_text{
-  background-color: #f1ca80;
-  width: 280px;
-  height: 50px;
-  text-align: center;
-  display: flex;                 /* ← ここをflexに変更 */
-  align-items: center;          /* 縦中央揃え */
-  justify-content: center;      /* 横中央揃え（念のため） */
-  margin-top: -10px;
-}
-
-.service_container_box09_text p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0px;
-  margin-right: 0px;
-  text-align: center;
-}
-
-.service_text{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 25px;
-  font-weight: 400;
-  color: #000;
-  letter-spacing: 0px;
-  text-align: center;
-  line-height: 13px;
-  padding-top: 30px;
-  padding-bottom: 100px;
-}
-
-/* ------------------------------------------
-制作の流れ
----------------------------------------------*/
-
-.flow_and_cost {
-  background: linear-gradient(135deg, #f7d579, #ffb900);
-}
-
-.flow_element {
-  margin: 0 auto;
-  padding: 0 20px;
-  overflow: hidden; /* 見切れる分を非表示にする */
-}
-
-.flow_title_container{
-  padding-top: 10px;
-  padding-bottom: 80px;
-  text-align: center;
-}
-
-.flowtitle{
-  font-family: "Noto Sans JP", sans-serif;
-  color: #fff;
-  font-size: 130px;
-}
-
-.flow_title_container p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  margin-top: -110px;
-}
-
-.flow_border{
-  width: 100px;               /* 線の長さ（お好みで調整） */
-  height: 2px;                /* 線の太さ */
-  background-color: #000;  /* 線の色 */
-  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
-}
-
-/* セクション全体の背景 */
-.flow_section {
-  background: linear-gradient(to right, #f7d97e, #fcb720);
-  padding: 80px 0;
-  overflow: hidden; /* 見切れる分を非表示にする */
-  position: relative;
-}
-
-/* 白いボックス（交互左右配置） */
-.flow_step {
-  width: 1200px; /* sectionより大きくする */
-  background: #fff;
-  border-radius: 70px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  padding: 30px 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-/* 左寄せで見切れさせる */
-.step-left {
-  margin: 40px 0 40px auto;
-  transform: translateX(200px); /* ←増やす */
-}
-
-/* 右寄せで見切れさせる */
-.step-right {
-  margin: 40px auto 40px 0;
-  transform: translateX(-200px); /* ←増やす */
-  flex-direction: row-reverse;
-}
-
-/* 番号共通 */
-.flow_number {
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 57px;
-  font-weight: 300;
-  color: #f2deac;
-  margin: 0;
-  flex-shrink: 0;
-}
-
-/* テキストブロック共通 */
-.flow_content {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  flex: 1;
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-.flow_title {
-  font-size: 26px;
-  font-weight: 600;
-  color: #e15656;
-  margin: 0 0 5px;
-}
-
-.flow_text {
-  font-size: 16px;
-  color: #e97a7a;
-  margin: 0;
-}
-
-/* 左番号用 */
-.step-left .flow_number {
-  order: 0;
-  padding-left: 30px;
-}
-
-.step-left .flow_content {
-  order: 1;
-  padding-right: 50px;
-}
-
-/* 右番号用 */
-.step-right .flow_number {
-  order: 0;
-  padding-right: 30px;
-}
-
-.step-right .flow_content {
-  order: 1;
-  padding-left: 500px;
-  text-align: right;
-}
-
-/* ------------------------------------------
-制作料金
----------------------------------------------*/
-.cost_element {
-  background-color: #f2e7c4;
-  border-top-right-radius: 120px;
-  margin-right: auto;
-  margin-left: 0;
-  max-width: 1400px;
-}
-
-
-.cost_title_container {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.costtitle{
-  font-family: "Noto Sans JP", sans-serif;
-  color: #fff;
-  font-size: 130px;
-  padding-top: 100px;
-}
-
-.cost_title_container p{
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  margin-top: -110px;
-}
-
-.costtitle_sabu{
-  font-size: 15px;
-  padding-left: 10px;
-  letter-spacing: 0px;
-}
-
-.cost_border{
-  width: 100px;               /* 線の長さ（お好みで調整） */
-  height: 2px;                /* 線の太さ */
-  background-color: #000;  /* 線の色 */
-  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
-}
-
-.cost_container01{
-  padding-top: 40px;
-}
-
-[class^="cost_container"] {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-[class^="cost_container_box"] {
-  background: linear-gradient(172deg, #f5f5f5 50%, #ffffff 10%);
-  width: 650px;
-  padding: 5px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: "Noto Sans JP", sans-serif;
-  border-radius: 3px;
-  box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
-}
-
-.cost_container_title {
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 23px;
-  font-family: "M PLUS 1p", sans-serif;
-  text-align: left;
-  margin-right: auto;
-}
-
-
-.copies {
-  background-color: #f44336;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 3px;
-  margin-right: 10px;
-}
-
-.amount {
-  font-size: 30px;
-  font-weight: 700;
-  color: #222;
-  white-space: nowrap;
-}
-
-.tax {
-  font-size: 12px;
-  font-weight: 400;
-  margin-left: 3px;
-  color: #222;
-}
-
-.symbol {
-  font-size: 16px;
-  margin-left: 3px;
-  color: #222;
-}
-
-.cost_container_annotation{
-  padding-bottom: 100px;
-  margin-top: -30px;
-}
-
-.cost_annotation {
-  max-width: 850px;
-  margin: 60px auto 0;
-  font-size: 15px;
-  color: #222;
-  line-height: 1.5;
-  text-align: left;
-  background-color: #f2dda2;
-  padding: 10px 50px;
-  border-radius: 10px;
-  font-family: "Noto Sans JP", sans-serif;
-}
-
-/* ------------------------------------------
-お問い合わせ
----------------------------------------------*/
-
-#inquiries{
-  background-color: #fff;
-
-}
-
-.inquiries_element{
-  width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.inquiries_container{
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 25px;
-  text-align: center;
-  padding-top: 30px;
-}
-
-/* 問い合わせ三角記号 */
-.inquiries_icon {
-  display: flex;
-  flex-direction: column; /* 縦並び */
-  align-items: center;
-  gap: 6px; /* 三角形の間隔 */
-  margin-top: 10px;
-}
-
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid #333; /* ▼の色 */
-}
-
-/* 問い合わせボタン */
-.inquiries_button {
-  text-align: center;
-  margin-top: 40px;
-  padding-bottom: 60px;
-}
-
-.contact-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px 80px; /* ← 横幅を広げる */
-  min-width: 600px;   /* ← 最小横幅を設定（お好みで調整） */
-  background: linear-gradient(to bottom, #ff7c7c, #8f3b77);
-  color: white;
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 9999px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-
-.contact-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.btn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.arrow-icon svg {
-  width: 40px !important;
-  height: 40px !important;
-}
-
-.arrow-icon {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-}
-
-/* ------------------------------------------
-フッター
----------------------------------------------*/
-#footer {
-  background-color: #444; /* ダークグレー */
-  color: white;
-  padding: 40px 0 30px;
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 16px;
-}
-
-.footer_container01,
-.footer_container02 {
-  border: none !important;
-}
-
-.footer_container01 {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #666;
-}
-
-.footer_container01 img {
-  height: 60px;
-}
-
-.footer_nav {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footer_nav li {
-  position: relative;
-  padding: 0 10px;
-}
-
-.footer_nav li::after {
-  content: "|";
-  position: absolute;
-  right: -10px;
-  color: #ccc;
-}
-
-.footer_nav li:last-child::after {
-  content: "";
-}
-
-.footer_nav a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  transition: opacity 0.3s;
-}
-
-.footer_nav a:hover {
-  opacity: 0.7;
-}
-
-.footer_container02 {
-  max-width: 1100px;
-  margin: 20px auto 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  font-size: 15px;
-  padding-left: 700px;
-  margin-top: -40px;
-}
-
-.footer_text01 {
-  font-weight: 700;
-}
-
-.footer_text02 {
-  font-weight: 700;
-}
-
-.footer_text03 {
-  font-size: 12px;
-  color: #ddd;
-}
-
-
-
-/* ------------------------------------------
-レスポンシブデザイン（max-width: 480px）
----------------------------------------------*/
-@media screen and (max-width: 480px) {
-  /* 共通設定 */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-    overflow-x: hidden;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  img, svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  ul, li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  /* 各セクションの幅をスマホ向けに */
-  .top_element,
-  .merit_element,
-  .service_element,
-  .inquiries_element,
-  .footer_container01,
-  .footer_container02 {
-    width: 100%;
-    padding: 0 16px;
-  }
-
-  /* トップセクション */
-  #top {
-    padding: 80px 16px 40px;
-    text-align: center;
-    position: relative;
-    background-color: #fef4e8;
-  }
-
-  .toptitle h1 {
-    font-size: 24px;
-    line-height: 1.4;
-    margin-top: 24px;
-    color: #fff;
-  }
-
-  .toptitle_span01 {
-    display: block;
-    font-size: 18px;
-    color: #fff;
-  }
-
-  .toptitle_span02 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff;
-  }
-
-  .toptitle_text {
-    font-size: 14px;
-    margin: 16px 0 32px;
-    color: #fff;
-  }
-
-  .topimg img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 32px;
-  }
-
-  .circle {
-    display: none;
-  }
-
-  .top_button {
-    position: fixed;
-    bottom: 20px;
-    left: 16px;
-    right: 16px;
-    width: auto;
-    max-width: 100%;
-    z-index: 1000;
-  }
-
-  .contact-button {
-    display: block;
-    background: linear-gradient(to right, #f6708e, #d44d8f);
-    color: #fff;
-    font-size: 16px;
-    padding: 16px;
-    text-align: center;
-    border-radius: 999px;
-    text-decoration: none;
-    white-space: nowrap;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-
-  .arrow-icon {
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  /* MERITとSERVICEの縦並び調整 */
-  .merit_icon_container,
-  .service_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    padding: 0 16px;
-  }
-
-  [class^="service_container_box"] {
-    width: 100% !important;
-  }
-
-  [class^="service_container_box"] img {
-    width: 100%;
-    height: auto;
-  }
-
-  [class^="service_container_box"]_text {
-    width: 100% !important;
-  }
-
-  /* フロー（制作の流れ）調整 */
-  .flow_step {
-    flex-direction: column;
-    width: 100%;
-    transform: none !important;
-    padding: 24px;
-    margin: 24px 0;
-  }
-
-  .step-right,
-  .step-left {
-    margin: 24px 0 !important;
-  }
-
-  .flow_content {
-    padding: 0 !important;
-    text-align: left !important;
-  }
-
-  .flow_number {
-    text-align: center;
-    margin-bottom: 8px;
-  }
-
-  /* フォントと見出しサイズ調整 */
-  .merittitle,
-  .servicetitle,
-  .flowtitle,
-  .costtitle {
-    font-size: 40px;
-  }
-
-  .service_title_container p,
-  .flow_title_container p,
-  .cost_title_container p,
-  .merit_title_container p {
-    font-size: 16px;
-    margin-top: -20px;
-  }
-
-  .service_text {
-    font-size: 16px;
-    line-height: 1.8;
-  }
-
-  /* お問い合わせボタン */
-  .contact-btn {
-    min-width: auto;
-    width: 100%;
-    font-size: 18px;
-    padding: 16px;
-  }
-
-  .arrow-icon svg {
-    width: 24px !important;
-    height: 24px !important;
-  }
-
-  .footer_container02 {
-    padding-left: 0;
-    text-align: center;
-    justify-content: center;
-  }
-}
+<!DOCTYPE html>
+<html lang="ja">
+      <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>北海道歯科産業院内ツール制作</title>
+         <!--↓CSSリンク-->
+         <link rel="stylesheet" href="style.css">
+         <!--↓フォントNotoSansJP-->
+	     <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+         <!--↓フォントZen Kurenaido-->
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Noto+Sans+JP:wght@100..900&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+         <!--↓フォントM PLUS 1p-->
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        </head>
+
+      <body>
+           <!--トップ-->
+           <section id="top">
+             <div class="top_element">
+              <!--背景-->
+              <div class="circle circle01"></div>
+              <div class="circle circle02"></div>
+                  
+             <header>
+
+                 <!--ヘッダーナビ-->
+                 <div class="header_logo_img">
+                    <img src="img/toplogo.png" alt="北海道歯科産業株式会社ロゴ">
+                  </div>
+                  
+                  <!-- デスクトップ用ナビ -->
+                  <div class="headerlist">
+                    <nav id="headernav">
+                      <ul>
+                        <li><a href="#service">制作物の紹介</a></li>
+                        <li><a href="#flow">制作の流れ</a></li>
+                        <li><a href="#cost">制作料金</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  
+                  <!-- スマホ用ハンバーガーメニュー -->
+                  <div class="hamburger-menu">
+                    <input type="checkbox" id="menu-toggle">
+                    <label for="menu-toggle" class="menu-icon">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </label>
+                    <nav class="menu">
+                      <ul>
+                        <li><a href="#service">制作物の紹介</a></li>
+                        <li><a href="#flow">制作の流れ</a></li>
+                        <li><a href="#cost">制作料金</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                  
+                 
+              </header>
+
+             <!--トップタイトル-->
+             <div class="toptitle">
+                 <h1><span class="toptitle_span01">“らしさ”を伝える</span><br><span class="toptitle_span02">院内ツール制作</span></h1>
+                 <p class="toptitle_text">薬袋・診察券・封筒など、日々の診療に欠かせないツールをまるごとデザイン</p>
+             </div>
+                
+              <!--トップ画像-->
+              <div class="topimg">
+                 <img src="img/topsozai.png" alt="北海道歯科産業院内ツールイメージ画像">
+              </div>
+
+              <!--固定ボタン(お申し込みはこちら→)-->
+              <div class="top_button">
+                 <a href="#contact" class="contact-button">
+                     お問い合わせはこちら
+                     <span class="arrow-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="11" stroke="white"/>
+                        <polyline points="10 8 14 12 10 16"/>
+                      </svg>
+                    </span>
+                 </a>
+              </div>
+              </div>
+           </section>
+
+
+           
+           <!--院内ツールメリット-->
+           <section id="merit">
+            <div class="merit_element">
+                <div class="merit_title_container">
+                   <h2 class="merittitle">MERIT</h2>
+                   <p>オリジナル院内ツールを作るメリット</p>
+                   <div class="merit_border"></div>
+                </div>
+
+                <div class="merit_icon_container">
+                    <div class="merit_icon_01">
+                        <img src="img/merit01.png" alt="使いやすさを追求し負担を軽減">
+                        <p class="merit_icon_title">使いやすさを追求し<br>負担を軽減</p>
+                        <p class="merit_icon_text">
+                            医院名を印刷で記載することによって、スタッフの方々の作業を軽減させ、患者さんの待ち時間の軽減にも繋がります。
+                        </p>
+                    </div>
+
+                    <div class="merit_icon_02">
+                        <img src="img/merit02.png" alt="使いやすさを追求し負担を軽減">
+                        <p class="merit_icon_title">患者さんが医院に持つ<br>イメージを定着させる</p>
+                        <p class="merit_icon_text">
+                            ブランドイメージを統一し、清潔感・信頼感の
+                            あるデザインに仕上げます。単なるビジュアル
+                            だけでなく、医院のイメージを伝えます。
+                        </p>
+                    </div>
+
+                    <div class="merit_icon_03">
+                        <img src="img/merit03.png" alt="使いやすさを追求し負担を軽減">
+                        <p class="merit_icon_title">制作から納品まで<br>ワンストップ</p>
+                        <p class="merit_icon_text">
+                            デザイン制作から印刷まで当社にまるごと
+                            お任せください！ご希望されるイメージを
+                            専任のデザイナーがカタチにします。
+                        </p>
+                    </div>
+                 </div>
+                </div>
+           </section>
+           
+           <!--制作物の紹介-->
+           <section id="service">
+            <div class="service_element">
+
+                        <div class="service_title_container">
+                           <h2 class="servicetitle">SERVICE</h2>
+                           <p>制作物の紹介</p>
+                           <div class="service_border"></div>
+                       </div>
+
+                            <!--院内ツール制作物アイコン-->
+                            <div class="service_container">
+                    
+                                <div class="service_container_box01">
+                                    <img src="img/service_icon01.jpg" alt="北海道歯科産業院内ツール薬袋">
+                                    <div class="service_container_box01_text">
+                                        <p>薬袋</p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box02">
+                                    <img src="img/service_icon02.jpg" alt="北海道歯科産業院内ツール封筒">
+                                    <div class="service_container_box02_text">
+                                        <p>封筒</p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box03">
+                                    <img src="img/service_icon03.jpg" alt="北海道歯科産業院内ツール薬診察券">
+                                    <div class="service_container_box03_text">
+                                        <p>診察券</p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box04">
+                                    <img src="img/service_icon04.jpg" alt="北海道歯科産業院内ツールパンフレット・ポスター">
+                                    <div class="service_container_box04_text">
+                                        <p>パンフレット・ポスター</p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box05">
+                                    <img src="img/service_icon05.jpg" alt="A4チラシ(DM対応可)">
+                                    <div class="service_container_box05_text">
+                                        <p>A4チラシ<span class="service_box05_text_span">(DM対応可)</span></p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box06">
+                                    <img src="img/service_icon06.jpg" alt="北海道歯科産業院内リコールハガキ">
+                                    <div class="service_container_box06_text">
+                                        <p>リコールハガキ</p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box07">
+                                    <img src="img/service_icon07.jpg" alt="北海道歯科産業院内ツール名刺">
+                                    <div class="service_container_box07_text">
+                                        <p>名刺</p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box08">
+                                    <img src="img/service_icon08.jpg" alt="北海道歯科産業院内ツールネームプレート">
+                                    <div class="service_container_box08_text">
+                                        <p>ネームプレート</p>
+                                    </div>
+                                </div>
+            
+                                <div class="service_container_box09">
+                                    <img src="img/service_icon09.jpg" alt="北海道歯科産業院内ツールロゴマーク">
+                                    <div class="service_container_box09_text">
+                                        <p>ロゴマーク</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="service_text">
+                                <p>制作例以外にご希望される印刷物がある医院様はお気軽にご相談ください</p>
+                                <p>ご希望のデザインに沿ったオーダーメイドでの作成もできます</p>
+                            </div>
+             </div> 
+            </section>
+
+           <!--制作の流れ-->
+           <div class="flow_and_cost">
+           <section id="flow">
+            <div class="flow_element">
+
+                     <div class="flow_title_container">
+                         <h2 class="flowtitle">FLOW</h2>
+                         <p>制作の流れ</p>
+                         <div class="flow_border"></div>
+                     </div>
+
+                     <div class="flow_step step-left">
+                        <p class="flow_number">01</p>
+                        <div class="flow_content">
+                          <p class="flow_title">デザインについてヒアリング</p>
+                          <p class="flow_text">ご希望のイメージやカラー、使用シーンを丁寧にお伺いします</p>
+                        </div>
+                      </div>
+                    
+                      <div class="flow_step step-right">
+                        <div class="flow_content">
+                          <p class="flow_title">ラフデザインご提案</p>
+                          <p class="flow_text">コンセプトに沿った初回デザイン案をご提案します</p>
+                        </div>
+                        <p class="flow_number">02</p>
+                      </div>
+                    
+                      <div class="flow_step step-left">
+                        <p class="flow_number">03</p>
+                        <div class="flow_content">
+                          <p class="flow_title">ご確認・修正作業</p>
+                          <p class="flow_text">デザイン案をご確認いただき、ご要望に応じて修正します</p>
+                        </div>
+                      </div>
+                    
+                      <div class="flow_step step-right">
+                        <div class="flow_content">
+                          <p class="flow_title">最終デザインを印刷</p>
+                          <p class="flow_text">校了後、品質管理のもと印刷作業に入ります</p>
+                        </div>
+                        <p class="flow_number">04</p>
+                      </div>
+                    
+                      <div class="flow_step step-left">
+                        <p class="flow_number">05</p>
+                        <div class="flow_content">
+                          <p class="flow_title">クリニックに直接納品</p>
+                          <p class="flow_text">成品を責任をもってクリニックまでお届けします</p>
+                        </div>
+                      </div>
+                          
+                    
+            </div>
+           </section>
+
+           <!--金額-->
+           <section id="cost">
+            <div class="cost_element">
+
+                 <div class="cost_title_container">
+                     <h2 class="costtitle">COST</h2>
+                     <p>制作料金<span class="costtitle_sabu">(デザイン費＋印刷)</span></p>
+                     <div class="cost_border"></div>
+                 </div>
+
+                 <div class="cost_container01">
+                      <div class="cost_container_box01">
+                          <p class="cost_container_title">薬袋</p>
+                          <p class="copies">100部</p>
+                          <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+                 <div class="cost_container02">
+                      <div class="cost_container_box02">
+                         <p class="cost_container_title">封筒</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                     </div>
+                 </div>
+
+                 <div class="cost_container03">
+                      <div class="cost_container_box03">
+                         <p class="cost_container_title">診察券</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+                 <div class="cost_container04">
+                      <div class="cost_container_box04">
+                         <p class="cost_container_title">パンフレット・ポスター</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+                 <div class="cost_container05">
+                      <div class="cost_container_box05">
+                         <p class="cost_container_title">A4チラシ</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+
+                 <div class="cost_container06">
+                      <div class="cost_container_box06">
+                         <p class="cost_container_title">リコールハガキ</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+                 <div class="cost_container07">
+                      <div class="cost_container_box07">
+                         <p class="cost_container_title">名刺</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+
+                 <div class="cost_container08">
+                      <div class="cost_container_box08">
+                         <p class="cost_container_title">ネームプレート</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+                 <div class="cost_container09">
+                      <div class="cost_container_box09">
+                         <p class="cost_container_title">ロゴマーク</p>
+                         <p class="copies">100部</p>
+                         <p class="amount">10,000<span class="tax">円(税別)</span><span class="symbol">〜</span></p>
+                      </div>
+                 </div>
+
+                 <div class="cost_container_annotation">
+                       <div class="cost_annotation">
+                          <p>商品によって印刷範囲、印刷可能色が限られております。既存のロゴマークご使用希望の場合は、元になるデータ(PDF/AI)をご提供ください。記載部数は最低部数となりますので、枚数はお打ち合わせ時にご相談ください。印刷枚数によって金額は変わります。</p>
+                       </div>
+                 </div>
+                </div>
+            </section>
+
+        </div>
+
+           <!--問い合わせ-->
+           <section id="inquiries">
+            <div class="inquiries_element">
+               <div class="inquiries_container">
+                  <p>掲載のない部数、品目も各種お見積もりいたします。<br>まずはお問い合わせください。</p>
+               </div>
+
+               <div class="inquiries_icon">
+                <span class="triangle"></span>
+                <span class="triangle"></span>
+              </div>
+
+              <div class="inquiries_button">
+                <a href="#contact" class="contact-btn">
+                  <span class="btn-text">お問い合わせはこちら</span>
+                  <span class="btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="11"/>
+                      <polyline points="10 8 14 12 10 16"/>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+              
+               </div>
+            </section> 
+           
+           <!--フッター-->
+           <footer id="footer">
+
+             <div class="footer_container01">
+                <img src="img/toplogo.png" alt="北海道歯科産業ロゴ">
+                <ul class="footer_nav">
+                    <li><a href="#top">TOP</a></li>
+                    <li><a href="#service">制作物の紹介</a></li>
+                    <li><a href="#flow">制作の流れ</a></li>
+                    <li><a href="#cost">制作料金</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_container02">
+                <p class="footer_text01">北海道歯科産業株式会社</p>
+                <p class="footer_text02">TEL 011-813-5556</p>
+                <p class="footer_text03">北海道札幌市白石区菊水上町2条4丁目36-77</p>
+            </div>
+        </footer>
+
+
+        <script>
+            const topButton = document.querySelector('.top_button');
+            const inquiries = document.getElementById('inquiries');
+            const footer = document.getElementById('footer');
+          
+            const observer = new IntersectionObserver(
+              (entries) => {
+                const isHidden = entries.some(entry => entry.isIntersecting);
+                topButton.classList.toggle('hide', isHidden);
+              },
+              {
+                root: null,
+                threshold: 0,
+              }
+            );
+          
+            observer.observe(inquiries);
+            observer.observe(footer);
+          </script>
+
+      </body>
+</html>
