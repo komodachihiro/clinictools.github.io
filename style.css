@@ -960,9 +960,9 @@ line-height: 67px;
 
 
 /* ------------------------------------------
-レスポンシブデザイン（max-width: 767px）
+レスポンシブデザイン（max-width: 480px）
 ---------------------------------------------*/
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   /* 共通設定 */
   *, *::before, *::after {
     box-sizing: border-box;
