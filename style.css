@@ -963,11 +963,12 @@ line-height: 67px;
 
 
 
+
 /* ------------------------------------------
-レスポンシブデザイン（max-width: 480px）
+スマホ用レスポンシブデザイン（max-width: 480px）
 ---------------------------------------------*/
 @media screen and (max-width: 480px) {
-  /* 共通設定 */
+  /* 共通リセット */
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -982,7 +983,7 @@ line-height: 67px;
   }
 
   img, svg {
-    max-width:100%;
+    max-width: 100%;
     height: auto;
     display: block;
   }
@@ -1004,95 +1005,66 @@ line-height: 67px;
     padding: 0 16px;
   }
 
-/* ハンバーガーメニュー基本設定 */
+  /* ヘッダー＆ナビ */
+  .headerlist {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
+  header img {
+    width: 120px;
+    height: auto;
+  }
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: auto;
+    margin-top: 16px;
+  }
+  .menu-icon span {
+    height: 3px;
+    background: #3f3f3f;
+    border-radius: 3px;
+    transition: all 0.3s;
+  }
+  #menu-toggle { display: none; }
+  .menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  .menu ul li { border-bottom: 1px solid #eee; }
+  .menu ul li a {
+    display: block;
+    padding: 16px;
+    color: #333;
+    text-decoration: none;
+  }
+  #menu-toggle:checked + .menu-icon + .menu {
+    transform: translateY(0);
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
 
-
-.hamburger-menu {
-  display: block;
-}
-
-.headerlist {
-  display: none;
-}
-
-header img {
-  width: 120px;
-  height: auto;
-}
-
-/* メニューアイコン */
-.menu-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 24px;
-  cursor: pointer;
-  z-index: 1001;
-  margin-left: auto;
-  margin-top: 16px;
-}
-
-.menu-icon span {
-  height: 3px;
-  background: #3f3f3f;
-  border-radius: 3px;
-  transition: all 0.3s;
-}
-
-/* チェックボックス非表示 */
-#menu-toggle {
-  display: none;
-}
-
-/* メニュー内容 */
-.menu {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  width: 200px;
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-
-.menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.menu ul li {
-  border-bottom: 1px solid #eee;
-}
-
-.menu ul li a {
-  display: block;
-  padding: 16px;
-  color: #333;
-  text-decoration: none;
-}
-
-/* 表示切り替え */
-#menu-toggle:checked + .menu-icon + .menu {
-  transform: translateY(0);
-}
-
-/* ハンバーガーアイコン変形（任意） */
-#menu-toggle:checked + .menu-icon span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-#menu-toggle:checked + .menu-icon span:nth-child(2) {
-  opacity: 0;
-}
-#menu-toggle:checked + .menu-icon span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
-
-
-  
   /* トップセクション */
   #top {
     padding: 80px 16px 40px;
@@ -1100,42 +1072,33 @@ header img {
     position: relative;
     background-color: #fef4e8;
   }
-
+  .circle { display: none; }
   .toptitle h1 {
     font-size: 24px;
     line-height: 1.4;
     margin-top: 24px;
     color: #fff;
   }
-
   .toptitle_span01 {
     display: block;
     font-size: 18px;
     color: #fff;
   }
-
   .toptitle_span02 {
     font-size: 28px;
     font-weight: bold;
     color: #fff;
   }
-
   .toptitle_text {
     font-size: 14px;
     margin: 16px 0 32px;
     color: #fff;
   }
-
   .topimg img {
     width: 100%;
     height: auto;
     margin-bottom: 32px;
   }
-
-  .circle {
-    display: none;
-  }
-
   .top_button {
     position: fixed;
     bottom: 20px;
@@ -1145,7 +1108,6 @@ header img {
     max-width: 100%;
     z-index: 1000;
   }
-
   .contact-button {
     display: block;
     background: linear-gradient(to right, #f6708e, #d44d8f);
@@ -1159,12 +1121,7 @@ header img {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
-  .arrow-icon {
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-
-  /* MERITとSERVICEの縦並び調整 */
+  /* MERITとSERVICE */
   .merit_icon_container,
   .service_container {
     display: flex;
@@ -1173,21 +1130,14 @@ header img {
     gap: 32px;
     padding: 0 16px;
   }
-
-  [class^="service_container_box"] {
+  .service_container {
+    grid-template-columns: 1fr;
+  }
+  .service_container [class*="_text"] {
     width: 100% !important;
   }
 
-  [class^="service_container_box"] img {
-    width: 100%;
-    height: auto;
-  }
-
-  [class^="service_container_box"]_text {
-    width: 100% !important;
-  }
-
-  /* フロー（制作の流れ）調整 */
+  /* FLOW（制作の流れ） */
   .flow_step {
     flex-direction: column;
     width: 100%;
@@ -1195,30 +1145,27 @@ header img {
     padding: 24px;
     margin: 24px 0;
   }
-
   .step-right,
   .step-left {
     margin: 24px 0 !important;
   }
-
   .flow_content {
     padding: 0 !important;
     text-align: left !important;
   }
-
   .flow_number {
     text-align: center;
     margin-bottom: 8px;
+    font-size: 32px;
   }
 
-  /* フォントと見出しサイズ調整 */
+  /* 見出し調整 */
   .merittitle,
   .servicetitle,
   .flowtitle,
   .costtitle {
     font-size: 40px;
   }
-
   .service_title_container p,
   .flow_title_container p,
   .cost_title_container p,
@@ -1226,28 +1173,33 @@ header img {
     font-size: 16px;
     margin-top: -20px;
   }
-
   .service_text {
     font-size: 16px;
     line-height: 1.8;
   }
 
-  /* お問い合わせボタン */
+  /* お問い合わせ */
   .contact-btn {
     min-width: auto;
     width: 100%;
     font-size: 18px;
     padding: 16px;
   }
-
   .arrow-icon svg {
     width: 24px !important;
     height: 24px !important;
   }
 
+  /* フッター */
+  .footer_container01 {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
   .footer_container02 {
     padding-left: 0;
     text-align: center;
     justify-content: center;
+    margin-top: 20px;
   }
 }
