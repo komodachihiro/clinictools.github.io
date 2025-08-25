@@ -967,6 +967,9 @@ line-height: 67px;
 /* ------------------------------------------
 スマホ用レスポンシブデザイン（max-width: 480px）
 ---------------------------------------------*/
+/* ------------------------------------------
+スマホ用レスポンシブデザイン（max-width: 480px）
+---------------------------------------------*/
 @media screen and (max-width: 480px) {
   /* 共通リセット */
   *, *::before, *::after {
@@ -994,7 +997,7 @@ line-height: 67px;
     list-style: none;
   }
 
-  /* 各セクションの幅をスマホ向けに */
+  /* 各セクション共通 */
   .top_element,
   .merit_element,
   .service_element,
@@ -1006,16 +1009,14 @@ line-height: 67px;
   }
 
   /* ヘッダー＆ナビ */
-  .headerlist {
-    display: none;
-  }
-  .hamburger-menu {
-    display: block;
-  }
+  .headerlist { display: none; }
+  .hamburger-menu { display: block; }
+
   header img {
     width: 120px;
     height: auto;
   }
+
   .menu-icon {
     display: flex;
     flex-direction: column;
@@ -1034,6 +1035,7 @@ line-height: 67px;
     transition: all 0.3s;
   }
   #menu-toggle { display: none; }
+
   .menu {
     position: absolute;
     top: 60px;
@@ -1052,15 +1054,12 @@ line-height: 67px;
     color: #333;
     text-decoration: none;
   }
-  #menu-toggle:checked + .menu-icon + .menu {
-    transform: translateY(0);
-  }
+
+  #menu-toggle:checked + .menu-icon + .menu { transform: translateY(0); }
   #menu-toggle:checked + .menu-icon span:nth-child(1) {
     transform: rotate(45deg) translateY(8px);
   }
-  #menu-toggle:checked + .menu-icon span:nth-child(2) {
-    opacity: 0;
-  }
+  #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
   #menu-toggle:checked + .menu-icon span:nth-child(3) {
     transform: rotate(-45deg) translateY(-8px);
   }
@@ -1068,37 +1067,43 @@ line-height: 67px;
   /* トップセクション */
   #top {
     padding: 80px 16px 40px;
-    text-align: center;
     position: relative;
     background-color: #fef4e8;
+    height: auto; /* 高さ固定を解除 */
+    background-size: cover;
+    background-position: center;
   }
   .circle { display: none; }
+
+  .toptitle {
+    padding-top: 30px;
+    text-align: left; /* スマホでも左寄せ */
+  }
   .toptitle h1 {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.4;
-    margin-top: 24px;
-    color: #fff;
   }
   .toptitle_span01 {
+    font-size: 16px;
     display: block;
-    font-size: 18px;
-    color: #fff;
   }
   .toptitle_span02 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: bold;
-    color: #fff;
+    display: block;
   }
   .toptitle_text {
-    font-size: 14px;
-    margin: 16px 0 32px;
-    color: #fff;
+    font-size: 13px;
+    margin-top: 8px;
+    text-align: left;
   }
+
   .topimg img {
     width: 100%;
     height: auto;
     margin-bottom: 32px;
   }
+
   .top_button {
     position: fixed;
     bottom: 20px;
