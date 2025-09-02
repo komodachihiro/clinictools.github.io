@@ -559,7 +559,7 @@ line-height: 67px;
 
 .flow_title_container{
   padding-top: 10px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   text-align: center;
 }
 
@@ -596,13 +596,13 @@ line-height: 67px;
 .flow_step {
   width: 1200px; /* sectionより大きくする */
   background: #fff;
-  border-radius: 70px;
+  border-radius: 30px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   padding: 30px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 10px;
 }
 
 /* 左寄せで見切れさせる */
@@ -632,7 +632,7 @@ line-height: 67px;
 .flow_content {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
   flex: 1;
   font-family: "Noto Sans JP", sans-serif;
 }
@@ -670,7 +670,7 @@ line-height: 67px;
 .step-right .flow_content {
   order: 1;
   padding-left: 500px;
-  text-align: right;
+  text-align: center;
 }
 
 /* ------------------------------------------
@@ -1055,58 +1055,66 @@ line-height: 67px;
   transform: scaleY(1);        /* 開いたら表示 */
 }
 
-/* メニュー全体を画面にオーバーレイ */
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 80px; /* ハンバーガーアイコン分の余白 */
-  transform: translateX(100%); /* 初期は右に隠す */
-  transition: transform 0.3s ease;
+
+/* メニュー全体をオーバーレイ */
+@media (max-width:480px){
+  header { position: static !important; z-index: auto !important; }
+
+  /* ハンバーガーメニュー全体 */
+  .menu {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 30%;              /* 必要なら100%に変更 */
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    z-index: 9998;            /* 背景 */
+  }
+
+  /* 開いたときにスライドイン */
+  #menu-toggle:checked + .menu-icon + .menu {
+    transform: translateX(0);
+  }
+
+  /* ハンバーガーアイコン */
+  .menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 9999;            /* メニューより前 */
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* ☓に変形 */
+  #menu-toggle:checked + .menu-icon span:nth-child(1) {
+    transform: rotate(49deg) translate(7px, 7px);
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
 }
 
-/* チェックが入ったらスライドイン */
-#menu-toggle:checked + .menu-icon + .menu {
-  transform: translateX(0);
-}
-
-/* ハンバーガーボタン */
-.menu-icon {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 22px;
-  cursor: pointer;
-  z-index: 2001; /* メニューより前面 */
-}
-
-.menu-icon span {
-  height: 3px;
-  background: #333;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* バツ印に変形 */
-#menu-toggle:checked + .menu-icon span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-#menu-toggle:checked + .menu-icon span:nth-child(2) {
-  opacity: 0;
-}
-#menu-toggle:checked + .menu-icon span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
 
 /* メニューリスト */
 .menu ul {
@@ -1155,7 +1163,7 @@ line-height: 67px;
 .circle02 {
   width: 150px;
   height: 150px;
-  bottom: 350px;
+  bottom: 400px;
   right: 30px;
 }
 
@@ -1215,6 +1223,11 @@ line-height: 67px;
   }
 
   /* MERITとSERVICE */
+
+  .merit_title_container{
+    margin-bottom: -60px;
+  }
+
   .merit_icon_container,
   .service_container {
     display: flex;
@@ -1222,6 +1235,7 @@ line-height: 67px;
     align-items: center;
     gap: 32px;
     padding: 0 16px;
+    
   }
   .service_container {
     grid-template-columns: 1fr;
@@ -1230,26 +1244,57 @@ line-height: 67px;
     width: 100% !important;
   }
 
+  .merit_icon_03{
+    padding-bottom: 30px;
+  }
+
+  /* SERVICE(制作物の紹介) */
+   .service_text{
+    margin-bottom: -70px;
+   }
+
   /* FLOW（制作の流れ） */
   .flow_step {
-    flex-direction: column;
+    display: flex;
+    flex-direction: column;   /* 縦並び */
+    align-items: center;      /* 横方向を中央寄せ */
+    justify-content: center;  /* 縦方向を中央寄せ */
+    text-align: center;       /* テキスト中央寄せ */
     width: 100%;
     transform: none !important;
     padding: 24px;
-    margin: 24px 0;
+    margin: 40px 0;
   }
-  .step-right,
-  .step-left {
-    margin: 24px 0 !important;
-  }
-  .flow_content {
-    padding: 0 !important;
-    text-align: left !important;
-  }
+  
   .flow_number {
-    text-align: center;
-    margin-bottom: 8px;
-    font-size: 32px;
+    padding: 0 !important;     /* 左右の余白をリセット */
+    margin: 0 auto 12px auto;  /* 中央寄せ */
+    text-align: center;        /* テキスト中央寄せ */
+    font-size: 40px;           /* サイズ調整 */
+    line-height: 1.2;          /* 行間を自然に */
+    font-weight: 500;
+    margin-top: 3px;
+    margin-bottom: 0px;
+  }
+
+  .flow_title {
+    margin-bottom: -25px;
+  }
+
+  .flow_text {
+    margin: 30px;
+    margin-bottom: 5px;
+  }
+
+  .step-left .flow_number,
+  .step-right .flow_number {
+    padding: 0 !important;     /* PC版のズレ防止 */
+  }
+
+  .step-left .flow_content,
+  .step-right .flow_content {
+    padding: 0 !important;     /* PC版の横パディング解除 */
+    text-align: center;        /* テキストも中央揃え */
   }
 
   /* 見出し調整 */
@@ -1257,14 +1302,14 @@ line-height: 67px;
   .servicetitle,
   .flowtitle,
   .costtitle {
-    font-size: 40px;
+    font-size: 60px;
   }
   .service_title_container p,
   .flow_title_container p,
   .cost_title_container p,
   .merit_title_container p {
     font-size: 16px;
-    margin-top: -20px;
+    margin-top: -40px;
   }
   .service_text {
     font-size: 16px;
