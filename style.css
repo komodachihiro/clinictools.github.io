@@ -1064,7 +1064,7 @@ line-height: 67px;
   .menu {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: 30%;              /* 必要なら100%に変更 */
+    height: 40%;              /* 必要なら100%に変更 */
     background: #fff;
     display: flex;
     flex-direction: column;
