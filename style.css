@@ -676,6 +676,19 @@ line-height: 67px;
 /* ------------------------------------------
 制作料金
 ---------------------------------------------*/
+
+[class^="cost_container_box"] {
+  display: flex;
+  justify-content: space-between;  /* タイトル左、価格右 */
+  align-items: center;
+  width: 650px;                    /* ボックス幅 */
+  margin: 40px auto;               /* 中央寄せ */
+  background: linear-gradient(172deg, #f5f5f5 50%, #ffffff 10%);
+  padding: 12px 24px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+}
+
 .cost_element {
   background-color: #f2e7c4;
   border-top-right-radius: 120px;
@@ -702,7 +715,7 @@ line-height: 67px;
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 3px;
-  margin-top: -110px;
+  margin-top: -105px;
 }
 
 .costtitle_sabu{
@@ -1064,7 +1077,7 @@ line-height: 67px;
   .menu {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: 40%;              /* 必要なら100%に変更 */
+    height: 56%;              /* 必要なら100%に変更 */
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -1105,7 +1118,7 @@ line-height: 67px;
 
   /* ☓に変形 */
   #menu-toggle:checked + .menu-icon span:nth-child(1) {
-    transform: rotate(49deg) translate(7px, 7px);
+    transform: rotate(48deg) translate(7px, 7px);
   }
   #menu-toggle:checked + .menu-icon span:nth-child(2) {
     opacity: 0;
@@ -1139,9 +1152,6 @@ line-height: 67px;
 
 
   /* トップセクション */
-
-
-
   #top {
     padding: 20px 16px 20px;
     position: relative;
@@ -1222,7 +1232,7 @@ line-height: 67px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
-  /* MERITとSERVICE */
+  /* メリット */
 
   .merit_title_container{
     margin-bottom: -60px;
@@ -1254,6 +1264,10 @@ line-height: 67px;
    }
 
   /* FLOW（制作の流れ） */
+  .flow_element {
+padding-bottom: 50px;
+  }
+
   .flow_step {
     display: flex;
     flex-direction: column;   /* 縦並び */
@@ -1279,6 +1293,7 @@ line-height: 67px;
 
   .flow_title {
     margin-bottom: -25px;
+    font-weight: 600;
   }
 
   .flow_text {
@@ -1296,6 +1311,83 @@ line-height: 67px;
     padding: 0 !important;     /* PC版の横パディング解除 */
     text-align: center;        /* テキストも中央揃え */
   }
+
+ /* コスト */
+ 
+.cost_element{
+  padding:  18px 24px;
+}
+
+.cost_title_container{
+  margin-top: -80px;
+  margin-bottom: 20px;
+}
+
+
+
+/* COSTボックス共通 */
+[class^="cost_container_box"] {
+  background: linear-gradient(165deg, #f5f5f5 50%, #ffffff 20%);
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;                 /* 要素間の間隔 */
+  font-family: "Noto Sans JP", sans-serif;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  margin: 12px 0;
+  box-sizing: border-box;
+}
+
+
+ /* ボックス全体を縦並び */
+ [class^="cost_container_box"] {
+  flex-direction: column;     /* ← 縦並び */
+  align-items: flex-start;    /* ← 左寄せ */
+  padding: 12px 16px;
+}
+
+/* 1段目：タイトル */
+.cost_container_title {
+  font-weight: 700;
+  font-size: 20px;    /* 少し大きく調整 */
+  margin: 0;
+  white-space: nowrap;
+  margin-bottom: 0px;         /* 下に余白 */
+}
+
+/* 2段目：価格行は右寄せ */
+.cost_price_row {
+  display: flex;
+  justify-content: flex-end;  /* ← 右寄せ */
+  align-items: center;
+  width: 100%;
+  gap: 0px;
+}
+
+.copies {
+  font-size: 12px;
+  padding: 3px 5px;
+}
+
+.amount {
+  font-size: 17px;
+}
+
+.tax {
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.cost_container_annotation {
+  margin-bottom: -50px;
+}
+
+.cost_annotation{
+  padding: 20px 20px 15px;s
+}
+
 
   /* 見出し調整 */
   .merittitle,
@@ -1317,6 +1409,35 @@ line-height: 67px;
   }
 
   /* お問い合わせ */
+
+  .inquiries_container{
+    font-size: 20px;
+    padding: 10px;
+    letter-spacing: 0px;
+    line-height: 1.3;
+  }
+
+  .inquiries_icon {
+    display: flex;
+    flex-direction: column; /* 縦並び */
+    align-items: center;
+    gap: 6px; /* 三角形の間隔 */
+    margin-top: -5px;
+    margin-bottom: -10px;
+  }
+  
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 12px solid #333; /* ▼の色 */
+  }
+
+  .inquiries_button{
+    margin-bottom: -30px;
+  }
+
   .contact-btn {
     min-width: auto;
     width: 100%;
@@ -1332,12 +1453,21 @@ line-height: 67px;
   .footer_container01 {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 6px;
+    font-size: 13px;
   }
   .footer_container02 {
     padding-left: 0;
     text-align: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
+  }
+
+  .footer_nav{
+    display: none;
+  }
+
+  .footer_container02{
+    display: none;
   }
 }
