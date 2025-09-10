@@ -856,6 +856,7 @@ line-height: 67px;
   text-align: center;
   margin-top: 40px;
   padding-bottom: 60px;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .contact-btn {
@@ -1035,7 +1036,7 @@ line-height: 67px;
   .hamburger-menu { display: block; }
 
   header img {
-    width: 120px;
+    width: 170px;
     height: auto;
   }
 
@@ -1043,6 +1044,7 @@ line-height: 67px;
   .header_logo_img_sp {
     display: block;      /* スマホで表示 */
     margin-top: -20px;
+    margin-left: -10px;
   }
 
   .header_logo_img {
@@ -1450,12 +1452,20 @@ padding-bottom: 50px;
   }
 
   /* フッター */
+
+
   .footer_container01 {
     flex-direction: column;
     align-items: center;
     gap: 6px;
     font-size: 13px;
   }
+  
+  .footer_container01 img {
+    width: 60%;
+    height: auto;
+  }
+
   .footer_container02 {
     padding-left: 0;
     text-align: center;
