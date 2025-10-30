@@ -8,7 +8,7 @@
   background-size: cover;         /* 全体にフィット */
   background-position: center;    /* 中央寄せ */
   background-repeat: no-repeat;   /* 繰り返しなし */
-  height: 100vh;                  /* 画面の高さに合わせる */
+  height: 110vh;                  /* 画面の高さに合わせる */
   position: relative;
   color: #fff;
   text-align: center;   /* 上の余白と横マージンを調整 */
@@ -159,7 +159,22 @@ line-height: 67px;
 }
 
 .topimg{
+  padding-bottom: 100px;
+}
+
+.topimg img{
   padding-top: 40px;
+  width: 110%;
+  height: auto;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.25));
+  transform: scale(1);
+}
+
+/* ホバー時にふわっと浮かせてズーム */
+.topimg img:hover {
+  transform: scale(1.1); /* 1.0→1.08 で自然なズーム感 */
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.35));
 }
 
 
@@ -281,6 +296,23 @@ line-height: 67px;
   width: 290px;
 }
 
+/* 初期状態：透明＋下に少しずらす */
+.merit_icon_container > div {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 表示時：ふわっと上に浮かび上がる */
+.merit_icon_container > div.show {
+  opacity: 1.4;
+  transform: translateY(0);
+}
+
+/* 順番に遅延をつける */
+.merit_icon_container > div:nth-child(1).show { transition-delay: 0.6s; }
+.merit_icon_container > div:nth-child(2).show { transition-delay: 1.2s; }
+.merit_icon_container > div:nth-child(3).show { transition-delay: 1.8s; }
 
   /* ------------------------------------------
 制作物の紹介
@@ -288,6 +320,7 @@ line-height: 67px;
 
 #service{
   background-color: #fff;
+  padding-bottom: 60px;
 }
 
 .service_element{
@@ -326,6 +359,7 @@ line-height: 67px;
 .service_container{
   display: flex;
   gap: 40px;
+  justify-content: center; /* ← これを追加！ */
 }
 
 /* 院内ツール制作物アイコン */
@@ -336,6 +370,7 @@ line-height: 67px;
   gap: 40px;                             /* アイテム間の余白 */
   padding: 40px 20px;
   box-sizing: border-box;
+ 
 }
 
 .service_container_box01_text{
@@ -531,6 +566,59 @@ line-height: 67px;
   text-align: center;
 }
 
+/* 各ボックス共通の見た目 */
+.service_container > div {
+  width: 280px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.4s ease;
+}
+
+/* ホバー時：全ボックス共通で拡大＆浮かせる */
+.service_container > div:hover {
+  transform: scale(1.07) translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+/* 各ボックス全体を相対位置にする */
+.service_container > div {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* オーバーレイ部分 */
+.service_container > div::before {
+  content: "制作例を見る";
+  position: absolute;
+  inset: 0; /* 全面カバー */
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;                 /* 初期は非表示 */
+  transform: scale(1.05);     /* 少し拡大しておく */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 5;
+  letter-spacing: 2px;
+}
+
+/* ホバー時にふわっと表示 */
+.service_container > div:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+
 .service_text{
   font-family: "M PLUS 1p", sans-serif;
   font-size: 25px;
@@ -541,6 +629,103 @@ line-height: 67px;
   line-height: 13px;
   padding-top: 30px;
   padding-bottom: 100px;
+}
+
+.modal {
+  display: none;            /* JSでblockに */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+}
+
+/* モーダルの中身サイズ（画面に収まる） */
+.modal-content {
+  position: relative;
+  margin: 4vh auto;
+  width: min(700px, 35vw);
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;         /* 余りを隠す */
+}
+
+/* スライダー枠：ここで1枚分だけ見せる */
+.modal-slider {
+  position: relative;
+  overflow: hidden;         /* ←これが超重要 */
+  width: 100%;
+  height: auto;
+}
+
+/* スライドトラック */
+.modal-slider .slides {
+  display: flex;            /* 横一列に並べる */
+  transition: transform .35s ease;
+  will-change: transform;
+}
+
+/* 各スライド画像：トラック幅の100%を占有（1枚表示） */
+.modal-slider .slides img {
+  flex: 0 0 100%;           /* ←1枚分の幅を固定 */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ナビボタンの配置（任意） */
+.modal-slider .prev,
+.modal-slider .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10; /* ← これを追加して最前面に出す！ */
+  border: none;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-slider .prev { left: 10px; }
+.modal-slider .next { right: 10px; }
+
+
+
+/* 閉じるボタン */
+.modal .close {
+  position: absolute;
+  z-index: 20; /* ← こちらも忘れずに！ */
+  right: 12px;
+  top: 8px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* 薬袋モーダルのスライダー調整 */
+
+
+/* 薬袋モーダル内の画像を小さく */
+#modal01 .slides img {
+  width: 50%;                  /* 小さく見せたい場合 */
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  flex-shrink: 0;              /* ← スライド幅を固定（横並びを防ぐ） */
+  display: block;
+}
+
+/* 薬袋モーダル内の画像を小さく */
+#modal04 .slides img {
+  width: 100%;                  /* 小さく見せたい場合 */
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto;
+  flex-shrink: 0;              /* ← スライド幅を固定（横並びを防ぐ） */
+  display: block;
 }
 
 /* ------------------------------------------
@@ -593,62 +778,81 @@ line-height: 67px;
 }
 
 /* 白いボックス（交互左右配置） */
+
+/* ステップ全体共通 */
 .flow_step {
-  width: 1200px; /* sectionより大きくする */
-  background: #fff;
-  border-radius: 30px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  padding: 30px 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px 60px;
+  width: 1200px;
+  margin: 40px auto;
+  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   gap: 10px;
 }
 
-/* 左寄せで見切れさせる */
+/* 左ステップ（数字→テキスト） */
 .step-left {
-  margin: 40px 0 40px auto;
-  transform: translateX(200px); /* ←増やす */
+  flex-direction: row;
+  justify-content: flex-start;
+  transform: translateX(150px);
 }
 
-/* 右寄せで見切れさせる */
+/* 右ステップ（テキスト→数字） */
 .step-right {
-  margin: 40px auto 40px 0;
-  transform: translateX(-200px); /* ←増やす */
   flex-direction: row-reverse;
+  justify-content: flex-end;
+  transform: translateX(-150px);
 }
 
-/* 番号共通 */
+/* 数字 */
 .flow_number {
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 57px;
-  font-weight: 300;
-  color: #f2deac;
-  margin: 0;
+  font-size: 90px;
+  font-weight: 500;
+  color: #f2deacb7;
+  margin: 0 10px;
   flex-shrink: 0;
 }
 
-/* テキストブロック共通 */
+/* テキストブロック */
 .flow_content {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  flex: 1;
   font-family: "Noto Sans JP", sans-serif;
+  max-width: 600px;
+  margin-top: 25px;
 }
 
+/* 左ステップのテキスト：左寄せ */
+.step-left .flow_content {
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* 右ステップのテキスト：右寄せ */
+.step-right .flow_content {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* タイトル */
 .flow_title {
-  font-size: 26px;
-  font-weight: 600;
+  font-size: 29px;
+  font-weight: 700;
   color: #e15656;
-  margin: 0 0 5px;
-}
-
-.flow_text {
-  font-size: 16px;
-  color: #e97a7a;
   margin: 0;
 }
+
+/* 説明文 */
+.flow_text {
+  font-size: 18px;
+  color: #f28379;
+  margin-top: 6px;
+}
+
 
 /* 左番号用 */
 .step-left .flow_number {
@@ -672,6 +876,48 @@ line-height: 67px;
   padding-left: 500px;
   text-align: center;
 }
+
+/* -----------------------------
+   アニメーション初期状態
+----------------------------- */
+.flow_step {
+  opacity: 0;                    /* 最初は非表示 */
+  transition: opacity 0.9s ease, transform 1s ease; /* スムーズな出現 */
+}
+
+/* 左ステップ */
+.step-left {
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 40px auto 40px 300px; /* ← 左寄せ */
+  transform: translateX(-150px);
+  padding-left: 80px;
+}
+
+/* 右ステップ */
+.step-right {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 40px 0 40px -300px; /* ← 右寄せ */
+  transform: translateX(150px);
+  padding-right: 80px;
+}
+
+/* -----------------------------
+   表示時の動き（クラス付与で発火）
+----------------------------- */
+.flow_step.show {
+  opacity: 1;
+  transform: translateX(0);       /* 元の位置にスライドイン */
+}
+
+/* ステップ順にディレイ（0.2秒刻み） */
+.flow_step:nth-of-type(1).show { transition-delay: 0.4s; }
+.flow_step:nth-of-type(2).show { transition-delay: 0.8s; }
+.flow_step:nth-of-type(3).show { transition-delay: 1.2s; }
+.flow_step:nth-of-type(4).show { transition-delay: 1.6s; }
+.flow_step:nth-of-type(5).show { transition-delay: 2.0s; }
+
 
 /* ------------------------------------------
 制作料金
@@ -763,12 +1009,16 @@ line-height: 67px;
 }
 
 
+.cost_price_row{
+  padding-bottom: 3px;
+}
+
 .copies {
   background-color: #f44336;
   color: white;
   font-size: 15px;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 3px;
   margin-right: 10px;
 }
@@ -1398,6 +1648,7 @@ padding-bottom: 50px;
   .costtitle {
     font-size: 60px;
   }
+
   .service_title_container p,
   .flow_title_container p,
   .cost_title_container p,
