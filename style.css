@@ -16,6 +16,8 @@
   font-family: "Noto Sans JP", sans-serif;
 }
 
+
+
 /* 回転する円 共通 */
 .circle01 {
   position: absolute;
@@ -74,6 +76,8 @@ header {
   position: relative;
   z-index: 2;
 }
+
+
 
 header{
   display: flex;
@@ -162,13 +166,13 @@ line-height: 67px;
   padding-bottom: 100px;
 }
 
-.topimg img{
-  padding-top: 40px;
-  width: 110%;
+.topimg picture,
+.topimg img {
+  width: 100%;
   height: auto;
-  transition: transform 0.6s ease, filter 0.6s ease;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.25));
-  transform: scale(1);
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.25));
 }
 
 /* ホバー時にふわっと浮かせてズーム */
@@ -1413,6 +1417,7 @@ line-height: 67px;
     background-position: center;
   }
 
+
   /* 円1：左上寄り */
 .circle01 {
   width: 100px;
@@ -1456,11 +1461,14 @@ line-height: 67px;
     letter-spacing: 1px;
   }
 
-  .topimg img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 100px;
-  }
+  .topimg picture,
+.topimg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 100px;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.25));
+}
 
   .top_button {
     position: fixed;
