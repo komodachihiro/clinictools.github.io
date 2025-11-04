@@ -168,7 +168,7 @@ line-height: 67px;
 
 .topimg picture,
 .topimg img {
-  width: 100%;
+  width: 105%;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -722,16 +722,50 @@ line-height: 67px;
   display: block;
 }
 
-/* 薬袋モーダル内の画像を小さく */
-#modal04 .slides img {
-  width: 100%;                  /* 小さく見せたい場合 */
-  max-width: 900px;
-  height: auto;
-  margin: 0 auto;
-  flex-shrink: 0;              /* ← スライド幅を固定（横並びを防ぐ） */
-  display: block;
+#modal02 .modal-content {
+  max-width: 65vw; /* モーダル全体の幅を広げる */
+  width: 90%;
 }
 
+#modal02 .slides {
+  max-width: 90vw;  /* ビューポートの90%まで拡大 */
+}
+
+#modal02 .slides img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* パンフレット・ポスターモーダル内の画像を大きく */
+#modal04 .modal-content {
+  max-width: 70vw; /* モーダル全体の幅を広げる */
+  width: 90%;
+}
+
+#modal04 .slides {
+  max-width: 90vw;  /* ビューポートの90%まで拡大 */
+}
+
+#modal04 .slides img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+#modal07 .modal-content {
+  margin-top: 10vh; /* ← このモーダルだけ下げる */
+}
+
+#modal08 .modal-content {
+  margin-top: 20vh; /* ← このモーダルだけ下げる */
+}
+
+#modal09 .modal-content {
+  margin-top: 20vh; /* ← このモーダルだけ下げる */
+}
 /* ------------------------------------------
 制作の流れ
 ---------------------------------------------*/
@@ -1333,7 +1367,7 @@ line-height: 67px;
   .menu {
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: 56%;              /* 必要なら100%に変更 */
+    height: 70%;              /* 必要なら100%に変更 */
     background: #fff;
     display: flex;
     flex-direction: column;
