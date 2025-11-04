@@ -1,0 +1,1776 @@
+
+/* ------------------------------------------
+トップ
+---------------------------------------------*/
+#top {
+  /* 背景画像の設定 */
+  background-image: url("img/topback.jpg"); /* 実際のパスに合わせて変更 */
+  background-size: cover;         /* 全体にフィット */
+  background-position: center;    /* 中央寄せ */
+  background-repeat: no-repeat;   /* 繰り返しなし */
+  height: 110vh;                  /* 画面の高さに合わせる */
+  position: relative;
+  color: #fff;
+  text-align: center;   /* 上の余白と横マージンを調整 */
+  box-sizing: border-box;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+
+
+/* 回転する円 共通 */
+.circle01 {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.988), rgba(251, 184, 28, 0.827), rgba(255, 150, 0, 0.4));  animation: rotateCircle 6s linear infinite;
+  z-index: 0; /* 後ろに配置 */
+}
+
+.circle02 {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.988), rgba(251, 184, 28, 0.827), rgba(255, 150, 0, 0.4));  animation: rotateCircle 9s linear infinite;
+  z-index: 0; /* 後ろに配置 */
+}
+
+
+/* 円1：左上寄り */
+.circle01 {
+  width: 300px;
+  height: 300px;
+  top: 150px;
+  left: 100px;
+}
+
+/* 円2：右下寄り */
+.circle02 {
+  width: 390px;
+  height: 390px;
+  bottom: 350px;
+  right: 30px;
+}
+
+/* 回転アニメーション（右回り） */
+@keyframes rotateCircle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* 左右の余白設定 */
+.top_element{
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1; /* これが必要 */
+}
+
+.toptitle,
+.topimg,
+header {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+header{
+  display: flex;
+  padding-top: 20px;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+header img{
+  width: 70%;
+  height: auto;
+}
+
+.header_logo_img_sp {
+  display: none;
+}
+
+
+.headerlist{
+  padding-left: 350px;
+}
+
+.headerlist ul {
+  display: flex;              /* 横並びにする */
+  gap: 80px;                  /* 項目間の間隔（お好みで調整） */
+  list-style: none;           /* ・（リストマーカー）を消す */
+  padding: 0;                 /* ブラウザのデフォルト余白を削除 */
+  margin: 0;
+}
+
+/* リンクのスタイル（任意で装飾） */
+.headerlist ul li a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #572e2e;
+  padding-bottom: 4px; /* 下線と文字の間隔調整 */
+}
+
+/* 擬似要素で下線を作る */
+.headerlist ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;                     /* 初期状態は非表示 */
+  height: 1.5px;
+  background-color: #572e2e;     /* 下線の色（お好みで） */
+  transition: width 0.3s ease;   /* アニメーション効果 */
+}
+
+/* ホバー時に下線がスライドして表示される */
+.headerlist ul li a:hover::after {
+  width: 100%;
+}
+
+.toptitle{
+padding-top: 50px;
+text-align: left;
+}
+
+.toptitle h1{
+line-height: 67px;
+}
+
+.toptitle_span01{
+  font-size: 60px;
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+.toptitle_span02{
+  font-size: 110px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.toptitle_text{
+  font-size: 22px;
+  margin-top: -10px;
+}
+
+.topimg{
+  padding-bottom: 100px;
+}
+
+.topimg picture,
+.topimg img {
+  width: 105%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.25));
+}
+
+/* ホバー時にふわっと浮かせてズーム */
+.topimg img:hover {
+  transform: scale(1.1); /* 1.0→1.08 で自然なズーム感 */
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.35));
+}
+
+
+/* 申し込みボタン */
+.top_button {
+  position: fixed;        /* 固定表示 */
+  bottom: 40px;           /* 画面下からの距離 */
+  right: 150px;            /* 画面右からの距離 */
+  z-index: 1000;          /* 他の要素の上に出す */
+}
+
+/* 申し込みボタン非表示 */
+.top_button.hide {
+  display: none !important;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 30px;
+    background: linear-gradient(to bottom, #f37c7c, #9e3c6c);
+    color: white;
+    font-size: 1.2em;
+    font-weight: 400;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .contact-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+  .arrow-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrow-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+
+  /* ------------------------------------------
+メリット
+---------------------------------------------*/
+
+#merit{
+  background-color: #f2e7c4;
+
+}
+
+.merit_element{
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.merit_title_container {
+  padding-top: 10px;
+  padding-bottom: 120px;
+  text-align: center;
+
+}
+
+.merittitle{
+  font-family: "Noto Sans JP", sans-serif;
+  color: #fff;
+  font-size: 130px;
+}
+
+.merit_title_container p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-top: -110px;
+}
+
+.merit_border {
+  width: 100px;               /* 線の長さ（お好みで調整） */
+  height: 2px;                /* 線の太さ */
+  background-color: #000;  /* 線の色 */
+  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
+}
+
+
+/* メリット紹介 */
+.merit_icon_container {
+  display: flex;
+  font-family: "Noto Sans JP", sans-serif;
+  gap: 70px;
+  padding-bottom: 100px;
+}
+
+.merit_icon_01{
+  text-align: left;
+}
+
+.merit_icon_title {
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  line-height: 30px;
+}
+
+.merit_icon_text{
+  font-size: 15px;
+  font-family: "M PLUS 1p", sans-serif;
+  width: 290px;
+}
+
+/* 初期状態：透明＋下に少しずらす */
+.merit_icon_container > div {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 表示時：ふわっと上に浮かび上がる */
+.merit_icon_container > div.show {
+  opacity: 1.4;
+  transform: translateY(0);
+}
+
+/* 順番に遅延をつける */
+.merit_icon_container > div:nth-child(1).show { transition-delay: 0.6s; }
+.merit_icon_container > div:nth-child(2).show { transition-delay: 1.2s; }
+.merit_icon_container > div:nth-child(3).show { transition-delay: 1.8s; }
+
+  /* ------------------------------------------
+制作物の紹介
+---------------------------------------------*/
+
+#service{
+  background-color: #fff;
+  padding-bottom: 60px;
+}
+
+.service_element{
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.service_title_container{
+  padding-top: 10px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.servicetitle{
+  font-family: "Noto Sans JP", sans-serif;
+  color: #ffe8a6;
+  font-size: 130px;
+}
+
+.service_title_container p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-top: -110px;
+}
+
+.service_border{
+  width: 100px;               /* 線の長さ（お好みで調整） */
+  height: 2px;                /* 線の太さ */
+  background-color: #000;  /* 線の色 */
+  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
+}
+
+.service_container{
+  display: flex;
+  gap: 40px;
+  justify-content: center; /* ← これを追加！ */
+}
+
+/* 院内ツール制作物アイコン */
+
+.service_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 横3列 */
+  gap: 40px;                             /* アイテム間の余白 */
+  padding: 40px 20px;
+  box-sizing: border-box;
+ 
+}
+
+.service_container_box01_text{
+  background-color: #f1ca80;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box01_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 30px;
+  margin-right: -30px;
+  text-align: center;
+}
+
+.service_container_box02_text{
+  background-color: #a68f86;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box02_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 30px;
+  margin-right: -30px;
+  text-align: center;
+}
+
+.service_container_box03_text{
+  background-color: #f1ca80;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box03_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 30px;
+  margin-right: -30px;
+  text-align: center;
+}
+
+.service_container_box04_text{
+  background-color: #a68f86;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box04_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0px;
+  margin-right: 0px;
+  text-align: center;
+}
+
+.service_container_box05_text{
+  background-color: #f1ca80;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box05_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0px;
+  margin-right: 0px;
+  text-align: center;
+}
+
+.service_box05_text_span{
+  font-size: 15px;
+}
+
+.service_container_box06_text{
+  background-color: #a68f86;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box06_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0px;
+  margin-right: 0px;
+  text-align: center;
+}
+
+.service_container_box07_text{
+  background-color: #f1ca80;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box07_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 30px;
+  margin-right: -30px;
+  text-align: center;
+}
+
+.service_container_box08_text{
+  background-color: #a68f86;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box08_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0px;
+  margin-right: 0px;
+  text-align: center;
+}
+
+.service_container_box09_text{
+  background-color: #f1ca80;
+  width: 280px;
+  height: 50px;
+  text-align: center;
+  display: flex;                 /* ← ここをflexに変更 */
+  align-items: center;          /* 縦中央揃え */
+  justify-content: center;      /* 横中央揃え（念のため） */
+  margin-top: -10px;
+}
+
+.service_container_box09_text p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0px;
+  margin-right: 0px;
+  text-align: center;
+}
+
+/* 各ボックス共通の見た目 */
+.service_container > div {
+  width: 280px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.4s ease;
+}
+
+/* ホバー時：全ボックス共通で拡大＆浮かせる */
+.service_container > div:hover {
+  transform: scale(1.07) translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+/* 各ボックス全体を相対位置にする */
+.service_container > div {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* オーバーレイ部分 */
+.service_container > div::before {
+  content: "制作例を見る";
+  position: absolute;
+  inset: 0; /* 全面カバー */
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;                 /* 初期は非表示 */
+  transform: scale(1.05);     /* 少し拡大しておく */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 5;
+  letter-spacing: 2px;
+}
+
+/* ホバー時にふわっと表示 */
+.service_container > div:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+
+.service_text{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  color: #000;
+  letter-spacing: 0px;
+  text-align: center;
+  line-height: 13px;
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+
+.modal {
+  display: none;            /* JSでblockに */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 10000;
+}
+
+/* モーダルの中身サイズ（画面に収まる） */
+.modal-content {
+  position: relative;
+  margin: 4vh auto;
+  width: min(700px, 35vw);
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;         /* 余りを隠す */
+}
+
+/* スライダー枠：ここで1枚分だけ見せる */
+.modal-slider {
+  position: relative;
+  overflow: hidden;         /* ←これが超重要 */
+  width: 100%;
+  height: auto;
+}
+
+/* スライドトラック */
+.modal-slider .slides {
+  display: flex;            /* 横一列に並べる */
+  transition: transform .35s ease;
+  will-change: transform;
+}
+
+/* 各スライド画像：トラック幅の100%を占有（1枚表示） */
+.modal-slider .slides img {
+  flex: 0 0 100%;           /* ←1枚分の幅を固定 */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ナビボタンの配置（任意） */
+.modal-slider .prev,
+.modal-slider .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10; /* ← これを追加して最前面に出す！ */
+  border: none;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-slider .prev { left: 10px; }
+.modal-slider .next { right: 10px; }
+
+
+
+/* 閉じるボタン */
+.modal .close {
+  position: absolute;
+  z-index: 20; /* ← こちらも忘れずに！ */
+  right: 12px;
+  top: 8px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* 薬袋モーダルのスライダー調整 */
+
+
+/* 薬袋モーダル内の画像を小さく */
+#modal01 .slides img {
+  width: 50%;                  /* 小さく見せたい場合 */
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  flex-shrink: 0;              /* ← スライド幅を固定（横並びを防ぐ） */
+  display: block;
+}
+
+#modal02 .modal-content {
+  max-width: 65vw; /* モーダル全体の幅を広げる */
+  width: 90%;
+}
+
+#modal02 .slides {
+  max-width: 90vw;  /* ビューポートの90%まで拡大 */
+}
+
+#modal02 .slides img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* パンフレット・ポスターモーダル内の画像を大きく */
+#modal04 .modal-content {
+  max-width: 70vw; /* モーダル全体の幅を広げる */
+  width: 90%;
+}
+
+#modal04 .slides {
+  max-width: 90vw;  /* ビューポートの90%まで拡大 */
+}
+
+#modal04 .slides img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+#modal07 .modal-content {
+  margin-top: 10vh; /* ← このモーダルだけ下げる */
+}
+
+#modal08 .modal-content {
+  margin-top: 20vh; /* ← このモーダルだけ下げる */
+}
+
+#modal09 .modal-content {
+  margin-top: 20vh; /* ← このモーダルだけ下げる */
+}
+/* ------------------------------------------
+制作の流れ
+---------------------------------------------*/
+
+.flow_and_cost {
+  background: linear-gradient(135deg, #f7d579, #ffb900);
+}
+
+.flow_element {
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden; /* 見切れる分を非表示にする */
+}
+
+.flow_title_container{
+  padding-top: 10px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.flowtitle{
+  font-family: "Noto Sans JP", sans-serif;
+  color: #fff;
+  font-size: 130px;
+}
+
+.flow_title_container p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-top: -110px;
+}
+
+.flow_border{
+  width: 100px;               /* 線の長さ（お好みで調整） */
+  height: 2px;                /* 線の太さ */
+  background-color: #000;  /* 線の色 */
+  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
+}
+
+/* セクション全体の背景 */
+.flow_section {
+  background: linear-gradient(to right, #f7d97e, #fcb720);
+  padding: 80px 0;
+  overflow: hidden; /* 見切れる分を非表示にする */
+  position: relative;
+}
+
+/* 白いボックス（交互左右配置） */
+
+/* ステップ全体共通 */
+.flow_step {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px 60px;
+  width: 1200px;
+  margin: 40px auto;
+  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  gap: 10px;
+}
+
+/* 左ステップ（数字→テキスト） */
+.step-left {
+  flex-direction: row;
+  justify-content: flex-start;
+  transform: translateX(150px);
+}
+
+/* 右ステップ（テキスト→数字） */
+.step-right {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  transform: translateX(-150px);
+}
+
+/* 数字 */
+.flow_number {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 90px;
+  font-weight: 500;
+  color: #f2deacb7;
+  margin: 0 10px;
+  flex-shrink: 0;
+}
+
+/* テキストブロック */
+.flow_content {
+  display: flex;
+  flex-direction: column;
+  font-family: "Noto Sans JP", sans-serif;
+  max-width: 600px;
+  margin-top: 25px;
+}
+
+/* 左ステップのテキスト：左寄せ */
+.step-left .flow_content {
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* 右ステップのテキスト：右寄せ */
+.step-right .flow_content {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* タイトル */
+.flow_title {
+  font-size: 29px;
+  font-weight: 700;
+  color: #e15656;
+  margin: 0;
+}
+
+/* 説明文 */
+.flow_text {
+  font-size: 18px;
+  color: #f28379;
+  margin-top: 6px;
+}
+
+
+/* 左番号用 */
+.step-left .flow_number {
+  order: 0;
+  padding-left: 30px;
+}
+
+.step-left .flow_content {
+  order: 1;
+  padding-right: 50px;
+}
+
+/* 右番号用 */
+.step-right .flow_number {
+  order: 0;
+  padding-right: 30px;
+}
+
+.step-right .flow_content {
+  order: 1;
+  padding-left: 500px;
+  text-align: center;
+}
+
+/* -----------------------------
+   アニメーション初期状態
+----------------------------- */
+.flow_step {
+  opacity: 0;                    /* 最初は非表示 */
+  transition: opacity 0.9s ease, transform 1s ease; /* スムーズな出現 */
+}
+
+/* 左ステップ */
+.step-left {
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 40px auto 40px 300px; /* ← 左寄せ */
+  transform: translateX(-150px);
+  padding-left: 80px;
+}
+
+/* 右ステップ */
+.step-right {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 40px 0 40px -300px; /* ← 右寄せ */
+  transform: translateX(150px);
+  padding-right: 80px;
+}
+
+/* -----------------------------
+   表示時の動き（クラス付与で発火）
+----------------------------- */
+.flow_step.show {
+  opacity: 1;
+  transform: translateX(0);       /* 元の位置にスライドイン */
+}
+
+/* ステップ順にディレイ（0.2秒刻み） */
+.flow_step:nth-of-type(1).show { transition-delay: 0.4s; }
+.flow_step:nth-of-type(2).show { transition-delay: 0.8s; }
+.flow_step:nth-of-type(3).show { transition-delay: 1.2s; }
+.flow_step:nth-of-type(4).show { transition-delay: 1.6s; }
+.flow_step:nth-of-type(5).show { transition-delay: 2.0s; }
+
+
+/* ------------------------------------------
+制作料金
+---------------------------------------------*/
+
+[class^="cost_container_box"] {
+  display: flex;
+  justify-content: space-between;  /* タイトル左、価格右 */
+  align-items: center;
+  width: 650px;                    /* ボックス幅 */
+  margin: 40px auto;               /* 中央寄せ */
+  background: linear-gradient(172deg, #f5f5f5 50%, #ffffff 10%);
+  padding: 12px 24px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+}
+
+.cost_element {
+  background-color: #f2e7c4;
+  border-top-right-radius: 120px;
+  margin-right: auto;
+  margin-left: 0;
+  max-width: 1400px;
+}
+
+
+.cost_title_container {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.costtitle{
+  font-family: "Noto Sans JP", sans-serif;
+  color: #fff;
+  font-size: 130px;
+  padding-top: 100px;
+}
+
+.cost_title_container p{
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-top: -105px;
+}
+
+.costtitle_sabu{
+  font-size: 15px;
+  padding-left: 10px;
+  letter-spacing: 0px;
+}
+
+.cost_border{
+  width: 100px;               /* 線の長さ（お好みで調整） */
+  height: 2px;                /* 線の太さ */
+  background-color: #000;  /* 線の色 */
+  margin: 20px auto 0;       /* 上の余白＋中央寄せ */
+}
+
+.cost_container01{
+  padding-top: 40px;
+}
+
+[class^="cost_container"] {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+[class^="cost_container_box"] {
+  background: linear-gradient(172deg, #f5f5f5 50%, #ffffff 10%);
+  width: 650px;
+  padding: 5px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Noto Sans JP", sans-serif;
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+}
+
+.cost_container_title {
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 23px;
+  font-family: "M PLUS 1p", sans-serif;
+  text-align: left;
+  margin-right: auto;
+}
+
+
+.cost_price_row{
+  padding-bottom: 3px;
+}
+
+.copies {
+  background-color: #f44336;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.amount {
+  font-size: 30px;
+  font-weight: 700;
+  color: #222;
+  white-space: nowrap;
+}
+
+.tax {
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 3px;
+  color: #222;
+}
+
+.symbol {
+  font-size: 16px;
+  margin-left: 3px;
+  color: #222;
+}
+
+.cost_container_annotation{
+  padding-bottom: 100px;
+  margin-top: -30px;
+}
+
+.cost_annotation {
+  max-width: 850px;
+  margin: 60px auto 0;
+  font-size: 15px;
+  color: #222;
+  line-height: 1.5;
+  text-align: left;
+  background-color: #f2dda2;
+  padding: 10px 50px;
+  border-radius: 10px;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+/* ------------------------------------------
+お問い合わせ
+---------------------------------------------*/
+
+#inquiries{
+  background-color: #fff;
+
+}
+
+.inquiries_element{
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.inquiries_container{
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+/* 問い合わせ三角記号 */
+.inquiries_icon {
+  display: flex;
+  flex-direction: column; /* 縦並び */
+  align-items: center;
+  gap: 6px; /* 三角形の間隔 */
+  margin-top: 10px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #333; /* ▼の色 */
+}
+
+/* 問い合わせボタン */
+.inquiries_button {
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 60px;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px 80px; /* ← 横幅を広げる */
+  min-width: 600px;   /* ← 最小横幅を設定（お好みで調整） */
+  background: linear-gradient(to bottom, #ff7c7c, #8f3b77);
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 9999px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-icon svg {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.arrow-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+/* ------------------------------------------
+フッター
+---------------------------------------------*/
+#footer {
+  background-color: #444; /* ダークグレー */
+  color: white;
+  padding: 40px 0 30px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
+}
+
+.footer_container01,
+.footer_container02 {
+  border: none !important;
+}
+
+.footer_container01 {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #666;
+}
+
+.footer_container01 img {
+  height: 60px;
+}
+
+.footer_nav {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer_nav li {
+  position: relative;
+  padding: 0 10px;
+}
+
+.footer_nav li::after {
+  content: "|";
+  position: absolute;
+  right: -10px;
+  color: #ccc;
+}
+
+.footer_nav li:last-child::after {
+  content: "";
+}
+
+.footer_nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.footer_nav a:hover {
+  opacity: 0.7;
+}
+
+.footer_container02 {
+  max-width: 1100px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  font-size: 15px;
+  padding-left: 700px;
+  margin-top: -40px;
+}
+
+.footer_text01 {
+  font-weight: 700;
+}
+
+.footer_text02 {
+  font-weight: 700;
+}
+
+.footer_text03 {
+  font-size: 12px;
+  color: #ddd;
+}
+
+
+
+
+/* ------------------------------------------
+スマホ用レスポンシブデザイン（max-width: 480px）
+---------------------------------------------*/
+@media screen and (max-width: 480px) {
+  /* 共通リセット */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  img, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* 各セクション共通 */
+  .top_element,
+  .merit_element,
+  .service_element,
+  .inquiries_element,
+  .footer_container01,
+  .footer_container02 {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  /* ヘッダー＆ナビ */
+  .headerlist { display: none; }
+  .hamburger-menu { display: block; }
+
+  header img {
+    width: 170px;
+    height: auto;
+  }
+
+ 
+  .header_logo_img_sp {
+    display: block;      /* スマホで表示 */
+    margin-top: -20px;
+    margin-left: -10px;
+  }
+
+  .header_logo_img {
+    display: none;       /* PC用ロゴをスマホでは消す */
+  }
+
+  #menu-toggle { display: none; }
+
+  /* スマホ用メニュー */
+
+
+
+  
+/* ラッパー */
+.hamburger-menu {
+  position: relative;  /* これでボタン基準になる */
+  display: inline-block;
+  z-index: 2001;
+}
+
+
+#menu-toggle:checked + .menu-icon + .menu {
+  transform: scaleY(1);        /* 開いたら表示 */
+}
+
+
+/* メニュー全体をオーバーレイ */
+@media (max-width:480px){
+  header { position: static !important; z-index: auto !important; }
+
+  /* ハンバーガーメニュー全体 */
+  .menu {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 70%;              /* 必要なら100%に変更 */
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    z-index: 9998;            /* 背景 */
+  }
+
+  /* 開いたときにスライドイン */
+  #menu-toggle:checked + .menu-icon + .menu {
+    transform: translateX(0);
+  }
+
+  /* ハンバーガーアイコン */
+  .menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 9999;            /* メニューより前 */
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* ☓に変形 */
+  #menu-toggle:checked + .menu-icon span:nth-child(1) {
+    transform: rotate(48deg) translate(7px, 7px);
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
+
+
+/* メニューリスト */
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.menu ul li {
+  border-bottom: 1px solid #eee;
+}
+.menu ul li a {
+  display: block;
+  padding: 18px 24px;
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+}
+.menu ul li a:hover {
+  background: #f7f7f7;
+}
+
+
+
+  /* トップセクション */
+  #top {
+    padding: 20px 16px 20px;
+    position: relative;
+    background-color: #fef4e8;
+    height: auto; /* 高さ固定を解除 */
+    background-size: cover;
+    background-position: center;
+  }
+
+
+  /* 円1：左上寄り */
+.circle01 {
+  width: 100px;
+  height: 100px;
+  top: 150px;
+  left: 10px;
+}
+
+/* 円2：右下寄り */
+.circle02 {
+  width: 150px;
+  height: 150px;
+  bottom: 400px;
+  right: 30px;
+}
+
+  .toptitle {
+    text-align: left; /* スマホでも左寄せ */
+    letter-spacing: -2px;
+  }
+
+
+  .toptitle_span01 {
+    font-size: 30px;
+    display: block;
+    margin-top: -60px;
+  }
+
+  .toptitle_span02 {
+    font-size: 45px;
+    font-weight: bold;
+    display: block;
+    letter-spacing: -2px;
+    margin-top: -80px;
+  }
+
+  .toptitle_text {
+    font-size: 15px;
+    margin-top: 8px;
+    text-align: left;
+    letter-spacing: 1px;
+  }
+
+  .topimg picture,
+.topimg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 100px;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.25));
+}
+
+  .top_button {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: 100%;
+    z-index: 1000;
+  }
+
+  .contact-button {
+    display: block;
+    background: linear-gradient(to right, #f6708e, #d44d8f);
+    color: #fff;
+    font-size: 23px;
+    padding: 16px;
+    text-align: center;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  /* メリット */
+
+  .merit_title_container{
+    margin-bottom: -60px;
+  }
+
+  .merit_icon_container,
+  .service_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 0 16px;
+    
+  }
+  .service_container {
+    grid-template-columns: 1fr;
+  }
+  .service_container [class*="_text"] {
+    width: 100% !important;
+  }
+
+  .merit_icon_03{
+    padding-bottom: 30px;
+  }
+
+  /* SERVICE(制作物の紹介) */
+   .service_text{
+    margin-bottom: -70px;
+   }
+
+  /* FLOW（制作の流れ） */
+  .flow_element {
+padding-bottom: 50px;
+  }
+
+  .flow_step {
+    display: flex;
+    flex-direction: column;   /* 縦並び */
+    align-items: center;      /* 横方向を中央寄せ */
+    justify-content: center;  /* 縦方向を中央寄せ */
+    text-align: center;       /* テキスト中央寄せ */
+    width: 100%;
+    transform: none !important;
+    padding: 24px;
+    margin: 40px 0;
+  }
+  
+  .flow_number {
+    padding: 0 !important;     /* 左右の余白をリセット */
+    margin: 0 auto 12px auto;  /* 中央寄せ */
+    text-align: center;        /* テキスト中央寄せ */
+    font-size: 40px;           /* サイズ調整 */
+    line-height: 1.2;          /* 行間を自然に */
+    font-weight: 500;
+    margin-top: 3px;
+    margin-bottom: 0px;
+  }
+
+  .flow_title {
+    margin-bottom: -25px;
+    font-weight: 600;
+  }
+
+  .flow_text {
+    margin: 30px;
+    margin-bottom: 5px;
+  }
+
+  .step-left .flow_number,
+  .step-right .flow_number {
+    padding: 0 !important;     /* PC版のズレ防止 */
+  }
+
+  .step-left .flow_content,
+  .step-right .flow_content {
+    padding: 0 !important;     /* PC版の横パディング解除 */
+    text-align: center;        /* テキストも中央揃え */
+  }
+
+ /* コスト */
+ 
+.cost_element{
+  padding:  18px 24px;
+}
+
+.cost_title_container{
+  margin-top: -80px;
+  margin-bottom: 20px;
+}
+
+
+
+/* COSTボックス共通 */
+[class^="cost_container_box"] {
+  background: linear-gradient(165deg, #f5f5f5 50%, #ffffff 20%);
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;                 /* 要素間の間隔 */
+  font-family: "Noto Sans JP", sans-serif;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  margin: 12px 0;
+  box-sizing: border-box;
+}
+
+
+ /* ボックス全体を縦並び */
+ [class^="cost_container_box"] {
+  flex-direction: column;     /* ← 縦並び */
+  align-items: flex-start;    /* ← 左寄せ */
+  padding: 12px 16px;
+}
+
+/* 1段目：タイトル */
+.cost_container_title {
+  font-weight: 700;
+  font-size: 20px;    /* 少し大きく調整 */
+  margin: 0;
+  white-space: nowrap;
+  margin-bottom: 0px;         /* 下に余白 */
+}
+
+/* 2段目：価格行は右寄せ */
+.cost_price_row {
+  display: flex;
+  justify-content: flex-end;  /* ← 右寄せ */
+  align-items: center;
+  width: 100%;
+  gap: 0px;
+}
+
+.copies {
+  font-size: 12px;
+  padding: 3px 5px;
+}
+
+.amount {
+  font-size: 17px;
+}
+
+.tax {
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.cost_container_annotation {
+  margin-bottom: -50px;
+}
+
+.cost_annotation{
+  padding: 20px 20px 15px;s
+}
+
+
+  /* 見出し調整 */
+  .merittitle,
+  .servicetitle,
+  .flowtitle,
+  .costtitle {
+    font-size: 60px;
+  }
+
+  .service_title_container p,
+  .flow_title_container p,
+  .cost_title_container p,
+  .merit_title_container p {
+    font-size: 16px;
+    margin-top: -40px;
+  }
+  .service_text {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* お問い合わせ */
+
+  .inquiries_container{
+    font-size: 20px;
+    padding: 10px;
+    letter-spacing: 0px;
+    line-height: 1.3;
+  }
+
+  .inquiries_icon {
+    display: flex;
+    flex-direction: column; /* 縦並び */
+    align-items: center;
+    gap: 6px; /* 三角形の間隔 */
+    margin-top: -5px;
+    margin-bottom: -10px;
+  }
+  
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 12px solid #333; /* ▼の色 */
+  }
+
+  .inquiries_button{
+    margin-bottom: -30px;
+  }
+
+  .contact-btn {
+    min-width: auto;
+    width: 100%;
+    font-size: 18px;
+    padding: 16px;
+  }
+  .arrow-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* フッター */
+
+
+  .footer_container01 {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+  
+  .footer_container01 img {
+    width: 60%;
+    height: auto;
+  }
+
+  .footer_container02 {
+    padding-left: 0;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .footer_nav{
+    display: none;
+  }
+
+  .footer_container02{
+    display: none;
+  }
+}
