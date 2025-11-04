@@ -944,17 +944,18 @@ line-height: 67px;
 /* -----------------------------
    表示時の動き（クラス付与で発火）
 ----------------------------- */
-.flow_step.show {
-  opacity: 1;
-  transform: translateX(0);       /* 元の位置にスライドイン */
+.flow_step {
+  opacity: 0;
+  transform: translateX(150px);
+  transition: opacity 0.9s ease, transform 1s ease;
 }
 
-/* ステップ順にディレイ（0.2秒刻み） */
-.flow_step:nth-of-type(1).show { transition-delay: 0.4s; }
-.flow_step:nth-of-type(2).show { transition-delay: 0.8s; }
-.flow_step:nth-of-type(3).show { transition-delay: 1.2s; }
-.flow_step:nth-of-type(4).show { transition-delay: 1.6s; }
-.flow_step:nth-of-type(5).show { transition-delay: 2.0s; }
+.flow_step.step-left { transform: translateX(-150px); }
+
+.flow_step.show {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 
 /* ------------------------------------------
@@ -1557,15 +1558,87 @@ line-height: 67px;
     padding-bottom: 30px;
   }
 
+  .merit_icon_container > div:nth-child(1).show { transition-delay: 0.3s; }
+.merit_icon_container > div:nth-child(2).show { transition-delay: 0.6s; }
+.merit_icon_container > div:nth-child(3).show { transition-delay: 0.9s; }
+
   /* SERVICE(制作物の紹介) */
    .service_text{
     margin-bottom: -70px;
    }
 
+   /* モーダル全体を画面いっぱいに */
+  .modal-content {
+    width: 100vw !important;
+    max-width: none !important;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: rgba(255,255,255,1); /* 背景が透明すぎる場合に明るく */
+  }
+
+  /* スライダー部分 */
+  .modal-slider {
+    width: 100% !important;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    padding-top: 60px;
+    box-sizing: border-box;
+  }
+
+  /* スライド群を縦積みに */
+  .slides {
+    display: block !important;
+    width: 100vw !important;
+    transform: none !important;
+  }
+
+  /* 画像を全幅に */
+  .slides img {
+    width: 100vw !important;
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 auto 24px auto;
+    display: block;
+  }
+
+  /* 閉じるボタン固定 */
+  .close {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 9999;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  /* スライドナビ非表示 */
+.prev,
+.next {
+    display: none !important;
+  }
+  
   /* FLOW（制作の流れ） */
   .flow_element {
 padding-bottom: 50px;
   }
+
+  .flow_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;   /* ← 横方向を中央に */
+    justify-content: center;
+    text-align: center !important;    /* ← テキストを中央揃え */
+  }
+  
 
   .flow_step {
     display: flex;
@@ -1573,32 +1646,39 @@ padding-bottom: 50px;
     align-items: center;      /* 横方向を中央寄せ */
     justify-content: center;  /* 縦方向を中央寄せ */
     text-align: center;       /* テキスト中央寄せ */
+    border-radius: 30px;
     width: 100%;
     transform: none !important;
-    padding: 24px;
+    padding: 20px;
     margin: 40px 0;
   }
+  
+
   
   .flow_number {
     padding: 0 !important;     /* 左右の余白をリセット */
     margin: 0 auto 12px auto;  /* 中央寄せ */
     text-align: center;        /* テキスト中央寄せ */
-    font-size: 40px;           /* サイズ調整 */
+    font-size: 50px;           /* サイズ調整 */
     line-height: 1.2;          /* 行間を自然に */
     font-weight: 500;
-    margin-top: 3px;
-    margin-bottom: 0px;
+    margin-top: 10px;
+    margin-bottom: -20px;
   }
 
   .flow_title {
-    margin-bottom: -25px;
+    margin-bottom: 0px;
     font-weight: 600;
+    font-size: 24px;
   }
 
   .flow_text {
-    margin: 30px;
-    margin-bottom: 5px;
+    margin: 20px;
+    margin-bottom: 30px;
+    line-height: 20px;
   }
+
+  
 
   .step-left .flow_number,
   .step-right .flow_number {
@@ -1618,11 +1698,9 @@ padding-bottom: 50px;
 }
 
 .cost_title_container{
-  margin-top: -80px;
-  margin-bottom: 20px;
+  margin-top: -70px;
+  margin-bottom: 40px;
 }
-
-
 
 /* COSTボックス共通 */
 [class^="cost_container_box"] {
@@ -1686,6 +1764,7 @@ padding-bottom: 50px;
 .cost_annotation{
   padding: 20px 20px 15px;s
 }
+
 
 
   /* 見出し調整 */
