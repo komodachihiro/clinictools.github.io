@@ -1707,15 +1707,20 @@ body.loaded .topimg img {
     top: 12px;
     right: 12px;
     z-index: 9999;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.6);
     color: #fff;
     width: 40px;
     height: 40px;
-    line-height: 40px;
-    text-align: center;
     border-radius: 50%;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 40px;      /* ← 高さと同じにして中央寄せ */
+    text-align: center;     /* ← 横方向中央 */
+    display: flex;          /* ← 完全中央寄せ */
+    justify-content: center;
+    align-items: center;
   }
-
+  
   /* スライドナビ非表示 */
 .prev,
 .next {
