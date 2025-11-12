@@ -162,24 +162,120 @@ line-height: 67px;
   margin-top: -10px;
 }
 
-.topimg{
-  padding-bottom: 100px;
+/* ==============================
+   タイトルアニメーション
+============================== */
+.toptitle {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 2.2s ease-out;
 }
 
-.topimg picture,
+body.loaded .toptitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ==============================
+   トップ画像フェード切り替え＋表示修正
+============================== */
+.topimg {
+  position: relative;
+  width: 110%;          /* ← 少し広めに取る */
+  left: -5%;            /* ← センター調整 */
+  max-width: none;      /* ← 制限を外す */
+  overflow: visible;    /* ← 見切れ防止 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 無地画像（最初に表示） */
+.topimg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("img/topsozai_muji.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 4.5s ease;
+  z-index: 0;
+}
+
+/* カラー画像（フェードイン） */
 .topimg img {
-  width: 105%;
+  width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
-  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.25));
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 2.5s ease;
+  position: relative;
+  z-index: 1;
+
+  /* ↓影を控えめに＆広がりを柔らかく */
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.15));
 }
 
-/* ホバー時にふわっと浮かせてズーム */
-.topimg img:hover {
-  transform: scale(1.1); /* 1.0→1.08 で自然なズーム感 */
-  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.35));
+/* ロード完了後：フェード切り替え */
+body.loaded .topimg::before {
+  opacity: 0;
 }
+
+body.loaded .topimg img {
+  opacity: 1;
+  animation: zoomfade 3s ease forwards;
+}
+
+/* -----------------------
+ふわっとフェード＆ズーム（最初のロード時のみ）
+------------------------ */
+@keyframes zoomfade {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ロード完了後に一度だけ発火 */
+body.loaded .topimg img {
+  opacity: 1;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.15));
+  animation: zoomfade 3s ease forwards;
+  transition: transform 0.6s ease; /* ← ここが hover 用 */
+  will-change: transform;          /* ← GPU支援で滑らかに */
+}
+
+/* -----------------------
+ホバー時の拡大
+------------------------ */
+.topimg:hover img {
+  transform: scale(1.08); /* ← ちょい控えめに自然な動き */
+}
+
+body.loaded .topimg img {
+  opacity: 1;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.15));
+  animation: zoomfade 3s ease forwards;
+  transition: transform 0.6s ease;
+  will-change: transform;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+/* アニメーション終了後、hover競合を防ぐ */
+.topimg img.animated {
+  animation: none !important;
+}
+
 
 
 /* 申し込みボタン */
