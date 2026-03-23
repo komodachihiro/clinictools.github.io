@@ -1482,6 +1482,14 @@ body.loaded .topimg img {
 }
 
 
+/* 申し込みボタン */
+.top_button {
+  position: fixed;        /* 固定表示 */
+  bottom: 20px;           /* 画面下からの距離 */
+}
+
+
+
 /* メニュー全体をオーバーレイ */
 @media (max-width:480px){
   header { position: static !important; z-index: auto !important; }
@@ -1680,9 +1688,9 @@ body.loaded .topimg img {
     padding-bottom: 30px;
   }
 
-  .merit_icon_container > div:nth-child(1).show { transition-delay: 0.3s; }
-.merit_icon_container > div:nth-child(2).show { transition-delay: 0.6s; }
-.merit_icon_container > div:nth-child(3).show { transition-delay: 0.9s; }
+  .merit_icon_container > div:nth-child(1).show { transition-delay: 0.2s; }
+.merit_icon_container > div:nth-child(2).show { transition-delay: 0.3s; }
+.merit_icon_container > div:nth-child(3).show { transition-delay: 0.4s; }
 
   /* SERVICE(制作物の紹介) */
    .service_text{
@@ -1694,6 +1702,19 @@ body.loaded .topimg img {
     width: 92%;
     max-width: none;
     padding: 20px 16px;
+  }
+
+
+  /* 封筒 */
+  #modal02 .modal-content {
+    width: 96vw;
+    max-width: none;
+  }
+
+  /* パンフレット */
+  #modal04 .modal-content {
+    width: 96vw;
+    max-width: none;
   }
 
   .modal-slider {
@@ -1710,6 +1731,7 @@ body.loaded .topimg img {
     -webkit-overflow-scrolling: touch;
     padding-bottom: 8px;
   }
+
 
   .slides img {
     flex: 0 0 85vw;
@@ -1953,7 +1975,11 @@ padding-bottom: 50px;
     top: -1px; /* ← これ追加 */
   }
   
-
+  .cost_annotation {
+    margin: 20px auto 0;
+    margin-bottom: 20px;
+    
+  }
   /* フッター */
 
 
