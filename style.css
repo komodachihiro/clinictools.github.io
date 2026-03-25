@@ -157,10 +157,11 @@ header img{
 .toptitle{
 padding-top: 50px;
 text-align: left;
+margin-left: -50px;
 }
 
 .toptitle h1{
-line-height: 67px;
+line-height: 75px;
 }
 
 .toptitle_span01{
@@ -1439,7 +1440,7 @@ body.loaded .topimg img {
   background-size: contain; /* ← バランスよく収まる */
   background-position: center;
   background-repeat: no-repeat;
-  transition: opacity 1.2s ease; /* ← 4.5 → 1.2秒 */
+  transition: opacity 1.9s ease; /* ← 4.5 → 1.2秒 */
 
 }
 
@@ -1620,6 +1621,15 @@ body.loaded .topimg img {
     height: auto; /* 高さ固定を解除 */
     background-size: cover;
     background-position: center;
+  }
+
+  .toptitle{
+    margin-left: 0px;
+    }
+
+
+.toptitle h1{
+  line-height: 68px;
   }
 
 
