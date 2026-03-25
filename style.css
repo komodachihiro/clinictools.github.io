@@ -1,4 +1,12 @@
-
+.top_element,
+.merit_element,
+.service_element,
+.flow_element,
+.cost_element,
+.inquiries_element {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 /* ------------------------------------------
 トップ
 ---------------------------------------------*/
