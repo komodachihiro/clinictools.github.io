@@ -1,12 +1,22 @@
-.top_element,
-.merit_element,
-.service_element,
-.flow_element,
-.cost_element,
-.inquiries_element {
-  max-width: 1200px;
+body {
+  max-width: 1440px;  /* ← ここ重要 */
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.cost_element {
+  max-width: 1400px;
+}
+
+.topimg {
+  max-width: 1440px;
   margin: 0 auto;
 }
+
+html {
+  background: #f2e7c4;/* 外側の色 */
+}
+
 /* ------------------------------------------
 トップ
 ---------------------------------------------*/
@@ -819,7 +829,6 @@ body.loaded .topimg img {
 /* 薬袋モーダル内の画像を小さく */
 #modal01 .slides img {
   width: 50%;                  /* 小さく見せたい場合 */
-  max-width: 600px;
   height: auto;
   margin: 0 auto;
   flex-shrink: 0;              /* ← スライド幅を固定（横並びを防ぐ） */
@@ -1730,6 +1739,15 @@ body.loaded .topimg img {
   }
 
 
+
+  .modal-slider .prev {
+    left: 6px;
+  }
+
+  .modal-slider .next {
+    right: 6px;
+  }
+
   /* 封筒 */
   #modal02 .modal-content {
     width: 96vw;
@@ -1787,11 +1805,7 @@ body.loaded .topimg img {
   }
   
   /* スライドナビ非表示 */
-.prev,
-.next {
-    display: none !important;
-  }
-  
+
   /* FLOW（制作の流れ） */
   .flow_element {
 padding-bottom: 50px;
